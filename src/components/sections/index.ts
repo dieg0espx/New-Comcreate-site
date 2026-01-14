@@ -1,0 +1,13 @@
+export { Hero } from "./Hero";
+export { GlobeSection } from "./GlobeSection";
+export { Services } from "./Services";
+export { Stats } from "./Stats";
+export { Features } from "./Features";
+export { Testimonials } from "./Testimonials";
+export { CTA } from "./CTA";
+export { ServiceHero } from "./ServiceHero";
+export { ServiceFeatures } from "./ServiceFeatures";
+export { ServiceProcess } from "./ServiceProcess";
+export { ServiceCTA } from "./ServiceCTA";
+export { TechStack } from "./TechStack";
+export { ProjectsParallax } from "./ProjectsParallax";

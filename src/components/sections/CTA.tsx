@@ -6,7 +6,7 @@ import { IconArrowRight } from "@tabler/icons-react";
 
 export function CTA() {
   return (
-    <section className="relative py-32 bg-black">
+    <section className="relative py-32">
       {/* Subtle gradient accent */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[1px] bg-gradient-to-r from-transparent via-blue-500/50 to-transparent" />
 

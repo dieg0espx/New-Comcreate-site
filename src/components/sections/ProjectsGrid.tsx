@@ -193,15 +193,8 @@ export function ProjectsGrid({ projects }: ProjectsGridProps) {
                       "relative overflow-hidden",
                       isLarge ? "h-64" : "h-48"
                     )}>
-                      {/* Gradient Overlay */}
-                      <div
-                        className={cn(
-                          "absolute inset-0 bg-gradient-to-br opacity-90 z-10 transition-opacity duration-500",
-                          project.gradient || "from-blue-500/80 to-purple-600/60",
-                          isHovered && "opacity-70"
-                        )}
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-neutral-900 via-neutral-900/50 to-transparent z-10" />
+                      {/* Bottom gradient for text readability */}
+                      <div className="absolute inset-0 bg-gradient-to-t from-neutral-900 via-transparent to-transparent z-10" />
 
                       {/* Category & Result Badges */}
                       <div className="absolute top-4 left-4 right-4 flex justify-between items-start z-20">
@@ -223,10 +216,7 @@ export function ProjectsGrid({ projects }: ProjectsGridProps) {
                       <div className="absolute inset-0 overflow-hidden">
                         <iframe
                           src={project.liveUrl}
-                          className={cn(
-                            "transition-all duration-700 pointer-events-none",
-                            isHovered ? "opacity-80 scale-[1.02]" : "opacity-50"
-                          )}
+                          className="pointer-events-none"
                           title={project.title}
                           loading="lazy"
                           style={{

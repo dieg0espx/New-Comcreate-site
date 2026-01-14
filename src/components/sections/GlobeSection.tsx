@@ -40,9 +40,7 @@ const colorClasses: Record<string, { bg: string; text: string; border: string }>
 
 export function GlobeSection() {
   return (
-    <section className="relative py-24 bg-black overflow-hidden">
-      {/* Gradient overlay top */}
-      <div className="absolute top-0 left-0 right-0 h-32 bg-gradient-to-b from-black to-transparent z-10" />
+    <section className="relative py-24 overflow-hidden">
 
       <div className="relative max-w-7xl mx-auto px-6">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
@@ -122,9 +120,6 @@ export function GlobeSection() {
           </motion.div>
         </div>
       </div>
-
-      {/* Gradient overlay bottom */}
-      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-black to-transparent z-10" />
     </section>
   );
 }

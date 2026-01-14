@@ -16,10 +16,6 @@ const projects = [
     link: "https://www.hansenchiropracticaz.com/",
   },
   {
-    title: "4 Corners",
-    link: "https://4corners-site.vercel.app/home",
-  },
-  {
     title: "Casita Azul",
     link: "https://www.casitaazulpdx.com/es",
   },
@@ -52,16 +48,20 @@ const projects = [
     link: "https://www.baldeaglebuilders.com/",
   },
   {
-    title: "RS Surf",
-    link: "https://rssurf.com",
-  },
-  {
-    title: "House of Sacred Flame",
-    link: "https://houseofsacredflame.com/",
-  },
-  {
     title: "San Diego Dumpster Pros",
     link: "https://dumpster-glass.vercel.app/",
+  },
+  {
+    title: "Crea Development",
+    link: "https://www.crea-development.com/",
+  },
+  {
+    title: "Cadiz Lluis Concierge",
+    link: "https://www.cadizlluisconcierge.com/",
+  },
+  {
+    title: "Key Real Estate Capital",
+    link: "https://www.keyrealestatecapital.com/",
   },
 ];
 

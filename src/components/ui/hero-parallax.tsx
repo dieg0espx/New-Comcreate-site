@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useState } from "react";
 import {
   motion,
   useScroll,
@@ -8,6 +8,7 @@ import {
   MotionValue,
 } from "framer-motion";
 import Link from "next/link";
+import Image from "next/image";
 
 export const HeroParallax = ({
   products,
@@ -15,6 +16,7 @@ export const HeroParallax = ({
   products: {
     title: string;
     link: string;
+    thumbnail?: string;
   }[];
 }) => {
   const firstRow = products.slice(0, 5);
@@ -56,7 +58,7 @@ export const HeroParallax = ({
   return (
     <div
       ref={ref}
-      className="h-[300vh] py-40 overflow-hidden antialiased relative flex flex-col self-auto [perspective:1000px] [transform-style:preserve-3d] bg-black"
+      className="h-[300vh] py-40 overflow-hidden antialiased relative flex flex-col self-auto [perspective:1000px] [transform-style:preserve-3d]"
     >
       <Header />
       <motion.div
@@ -69,29 +71,32 @@ export const HeroParallax = ({
         className=""
       >
         <motion.div className="flex flex-row-reverse space-x-reverse space-x-20 mb-20">
-          {firstRow.map((product) => (
+          {firstRow.map((product, idx) => (
             <ProductCard
               product={product}
               translate={translateX}
               key={product.title}
+              index={idx}
             />
           ))}
         </motion.div>
         <motion.div className="flex flex-row mb-20 space-x-20">
-          {secondRow.map((product) => (
+          {secondRow.map((product, idx) => (
             <ProductCard
               product={product}
               translate={translateXReverse}
               key={product.title}
+              index={idx + 5}
             />
           ))}
         </motion.div>
         <motion.div className="flex flex-row-reverse space-x-reverse space-x-20">
-          {thirdRow.map((product) => (
+          {thirdRow.map((product, idx) => (
             <ProductCard
               product={product}
               translate={translateX}
               key={product.title}
+              index={idx + 10}
             />
           ))}
         </motion.div>
@@ -140,16 +145,35 @@ export const Header = () => {
   );
 };
 
+const gradients = [
+  "from-blue-600 via-blue-500 to-cyan-500",
+  "from-purple-600 via-purple-500 to-pink-500",
+  "from-green-600 via-green-500 to-emerald-500",
+  "from-orange-600 via-orange-500 to-amber-500",
+  "from-rose-600 via-rose-500 to-pink-500",
+  "from-indigo-600 via-indigo-500 to-purple-500",
+  "from-cyan-600 via-cyan-500 to-blue-500",
+  "from-amber-600 via-amber-500 to-yellow-500",
+];
+
 export const ProductCard = ({
   product,
   translate,
+  index = 0,
 }: {
   product: {
     title: string;
     link: string;
+    thumbnail?: string;
   };
   translate: MotionValue<number>;
+  index?: number;
 }) => {
+  const [iframeError, setIframeError] = useState(false);
+  const [iframeLoaded, setIframeLoaded] = useState(false);
+  const [isHovered, setIsHovered] = useState(false);
+  const gradient = gradients[index % gradients.length];
+
   return (
     <motion.div
       style={{
@@ -158,40 +182,92 @@ export const ProductCard = ({
       whileHover={{
         y: -20,
       }}
+      onHoverStart={() => setIsHovered(true)}
+      onHoverEnd={() => setIsHovered(false)}
       key={product.title}
       className="group/product h-96 w-[30rem] relative shrink-0 rounded-xl overflow-hidden border border-white/10"
     >
-      {/* Iframe Preview */}
-      <div className="absolute inset-0 overflow-hidden bg-neutral-900">
-        <iframe
-          src={product.link}
-          className="pointer-events-none"
-          title={product.title}
-          loading="lazy"
-          style={{
-            width: "400%",
-            height: "400%",
-            transform: "scale(0.25)",
-            transformOrigin: "top left",
-          }}
+      {/* Thumbnail image if provided */}
+      {product.thumbnail && (
+        <Image
+          src={product.thumbnail}
+          height={600}
+          width={600}
+          className="object-cover object-left-top absolute h-full w-full inset-0"
+          alt={product.title}
         />
+      )}
+
+      {/* Iframe for live preview - only if no thumbnail */}
+      {!product.thumbnail && !iframeError && (
+        <div className="absolute inset-0 w-full h-full overflow-hidden">
+          <div
+            className="w-full h-full transition-transform duration-[3s] ease-in-out"
+            style={{
+              transform: isHovered ? "translateY(-400px)" : "translateY(0px)",
+            }}
+          >
+            <iframe
+              src={product.link}
+              className={`w-[200%] h-[200%] origin-top-left scale-50 pointer-events-none transition-opacity duration-500 ${
+                iframeLoaded ? "opacity-100" : "opacity-0"
+              }`}
+              title={product.title}
+              loading="lazy"
+              sandbox="allow-scripts allow-same-origin"
+              onLoad={() => setIframeLoaded(true)}
+              onError={() => setIframeError(true)}
+            />
+          </div>
+          {/* Loading state */}
+          {!iframeLoaded && (
+            <div className={`absolute inset-0 bg-gradient-to-br ${gradient} opacity-80 flex items-center justify-center`}>
+              <div className="w-8 h-8 border-2 border-white/30 border-t-white rounded-full animate-spin" />
+            </div>
+          )}
+        </div>
+      )}
+
+      {/* Fallback gradient card if iframe fails or no thumbnail */}
+      {!product.thumbnail && iframeError && (
+        <>
+          <div className={`absolute inset-0 bg-gradient-to-br ${gradient} opacity-80`} />
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(255,255,255,0.1)_1px,transparent_1px)] bg-[length:20px_20px]" />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+          <div className="absolute inset-0 flex flex-col items-center justify-center p-8">
+            <div className="w-16 h-16 rounded-2xl bg-white/10 backdrop-blur-sm border border-white/20 flex items-center justify-center mb-6">
+              <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" />
+              </svg>
+            </div>
+            <h2 className="text-white font-bold text-2xl text-center mb-2">{product.title}</h2>
+            <p className="text-white/60 text-sm">Web Project</p>
+          </div>
+        </>
+      )}
+
+      {/* Dark overlay gradient at bottom for text readability */}
+      <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-black/90 via-black/50 to-transparent" />
+
+      {/* Title overlay */}
+      <div className="absolute bottom-0 left-0 right-0 p-6">
+        <h2 className="text-white font-bold text-xl">{product.title}</h2>
       </div>
 
-      {/* Hover overlay */}
+      {/* Hover overlay with link */}
       <a
         href={product.link}
         target="_blank"
         rel="noopener noreferrer"
         className="absolute inset-0 z-10"
       >
-        <div className="absolute inset-0 h-full w-full opacity-0 group-hover/product:opacity-60 bg-gradient-to-t from-black via-black/50 to-transparent transition-opacity duration-300"></div>
-        <h2 className="absolute bottom-4 left-4 opacity-0 group-hover/product:opacity-100 text-white font-semibold text-lg transition-opacity duration-300">
-          {product.title}
-        </h2>
-        <div className="absolute bottom-4 right-4 opacity-0 group-hover/product:opacity-100 transition-opacity duration-300">
-          <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-          </svg>
+        <div className="absolute inset-0 h-full w-full opacity-0 group-hover/product:opacity-100 bg-black/40 backdrop-blur-sm transition-all duration-300 flex items-center justify-center">
+          <div className="px-6 py-3 rounded-full bg-white/10 border border-white/20 backdrop-blur-sm text-white font-medium flex items-center gap-2 group-hover/product:scale-105 transition-transform">
+            Visit Site
+            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+            </svg>
+          </div>
         </div>
       </a>
     </motion.div>

@@ -37,9 +37,9 @@ const testimonials = [
 
 export function Testimonials() {
   return (
-    <section className="relative py-32 bg-black overflow-hidden">
+    <section className="relative py-32 overflow-hidden">
       {/* Background gradient */}
-      <div className="absolute inset-0 bg-gradient-to-b from-black via-blue-950/10 to-black" />
+      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-blue-950/10 to-transparent" />
 
       {/* Animated orbs */}
       <div className="absolute top-1/2 left-1/4 w-[500px] h-[500px] bg-blue-500/5 rounded-full blur-[150px]" />
@@ -105,7 +105,7 @@ export function Testimonials() {
           whileInView={{ opacity: 1 }}
           transition={{ duration: 0.8, delay: 0.4 }}
           viewport={{ once: true }}
-          className="mt-2"
+          className="mt-[10px]"
         >
           <InfiniteMovingCards
             items={[...testimonials].reverse()}

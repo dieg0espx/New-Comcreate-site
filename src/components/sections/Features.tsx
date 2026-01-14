@@ -88,17 +88,13 @@ export function Features() {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
 
   return (
-    <section className="relative py-32 bg-black overflow-hidden">
+    <section className="relative py-32 overflow-hidden">
       {/* Background Ripple Effect */}
       <Ripple
         mainCircleSize={300}
         mainCircleOpacity={0.15}
         numCircles={10}
       />
-
-      {/* Gradient overlays */}
-      <div className="absolute inset-0 bg-gradient-to-b from-black via-transparent to-black pointer-events-none" />
-      <div className="absolute inset-0 bg-gradient-to-r from-black via-transparent to-black pointer-events-none" />
 
       <div className="relative max-w-7xl mx-auto px-6">
         {/* Section Header */}

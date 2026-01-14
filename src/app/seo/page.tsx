@@ -25,6 +25,7 @@ import { ShinyButton } from "@/components/ui/shiny-button";
 import { Spotlight } from "@/components/ui/spotlight";
 import { BackgroundBeams } from "@/components/ui/background-beams";
 import { HoverBorderGradient } from "@/components/ui/hover-border-gradient";
+import { ShootingStars } from "@/components/ui/shooting-stars";
 
 const services = [
   {
@@ -82,12 +83,46 @@ const stats = [
 ];
 
 const benefits = [
-  { icon: IconChartLine, title: "Data-Driven Strategy", description: "Every decision backed by analytics" },
-  { icon: IconBrandGoogle, title: "White-Hat Only", description: "Google-approved methods that last" },
-  { icon: IconReportAnalytics, title: "Transparent Reports", description: "Monthly metrics you understand" },
-  { icon: IconGraph, title: "ROI Focused", description: "Measurable business results" },
-  { icon: IconTargetArrow, title: "Industry Expertise", description: "E-commerce, healthcare, legal & more" },
-  { icon: IconUsers, title: "Dedicated Team", description: "Real experts, not bots" },
+  {
+    icon: IconChartLine,
+    title: "Data-Driven Strategy",
+    description: "Every decision backed by analytics",
+    stat: "10M+",
+    statLabel: "Data points analyzed",
+    gradient: "from-blue-500 to-cyan-500"
+  },
+  {
+    icon: IconBrandGoogle,
+    title: "White-Hat Only",
+    description: "Google-approved methods that last",
+    stat: "100%",
+    statLabel: "Compliant practices",
+    gradient: "from-green-500 to-emerald-500"
+  },
+  {
+    icon: IconReportAnalytics,
+    title: "Transparent Reports",
+    description: "Monthly metrics you understand",
+    stat: "24/7",
+    statLabel: "Dashboard access",
+    gradient: "from-purple-500 to-pink-500"
+  },
+  {
+    icon: IconGraph,
+    title: "ROI Focused",
+    description: "Measurable business results",
+    stat: "312%",
+    statLabel: "Avg. ROI increase",
+    gradient: "from-orange-500 to-red-500"
+  },
+  {
+    icon: IconTargetArrow,
+    title: "Industry Expertise",
+    description: "E-commerce, healthcare, legal & more",
+    stat: "50+",
+    statLabel: "Industries served",
+    gradient: "from-yellow-500 to-orange-500"
+  },
 ];
 
 const process = [
@@ -178,7 +213,35 @@ function RankingIndicator() {
 
 export default function SEOPage() {
   return (
-    <main className="bg-black">
+    <main className="bg-black relative">
+      {/* Global Shooting Stars */}
+      <div className="fixed inset-0 z-0 pointer-events-none">
+        <ShootingStars
+          starColor="#22c55e"
+          trailColor="#10b981"
+          minSpeed={15}
+          maxSpeed={35}
+          minDelay={800}
+          maxDelay={2000}
+        />
+        <ShootingStars
+          starColor="#06b6d4"
+          trailColor="#22c55e"
+          minSpeed={10}
+          maxSpeed={25}
+          minDelay={1500}
+          maxDelay={3000}
+        />
+        <ShootingStars
+          starColor="#10b981"
+          trailColor="#06b6d4"
+          minSpeed={20}
+          maxSpeed={40}
+          minDelay={1000}
+          maxDelay={2500}
+        />
+      </div>
+
       {/* Hero Section */}
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
         <Spotlight className="-top-40 left-0 md:left-60 md:-top-20" fill="#22c55e" />
@@ -288,8 +351,13 @@ export default function SEOPage() {
 
       {/* Services with Live Metrics */}
       <section className="relative py-32 overflow-hidden">
-        <div className="absolute inset-0 bg-dot-white/[0.05] [mask-image:radial-gradient(ellipse_at_center,black_50%,transparent_100%)]" />
-        <div className="absolute top-1/2 left-1/4 w-[600px] h-[600px] bg-green-500/5 rounded-full blur-[150px]" />
+        {/* Enhanced background effects */}
+        <div className="absolute inset-0 bg-dot-white/[0.03] [mask-image:radial-gradient(ellipse_at_center,black_60%,transparent_100%)]" />
+        <div className="absolute top-0 left-1/4 w-[800px] h-[800px] bg-green-500/8 rounded-full blur-[200px] animate-pulse" />
+        <div className="absolute bottom-0 right-1/4 w-[600px] h-[600px] bg-emerald-500/5 rounded-full blur-[150px]" />
+
+        {/* Animated gradient line */}
+        <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-green-500/50 to-transparent" />
 
         <div className="relative max-w-7xl mx-auto px-6">
           <motion.div
@@ -298,68 +366,151 @@ export default function SEOPage() {
             viewport={{ once: true }}
             className="text-center mb-20"
           >
-            <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm bg-green-500/10 text-green-400 border border-green-500/20 mb-6">
-              <span className="relative flex h-2 w-2">
+            {/* Enhanced badge */}
+            <motion.div
+              initial={{ scale: 0.8, opacity: 0 }}
+              whileInView={{ scale: 1, opacity: 1 }}
+              viewport={{ once: true }}
+              className="inline-flex items-center gap-3 px-5 py-2.5 rounded-full text-sm bg-gradient-to-r from-green-500/10 to-emerald-500/10 text-green-400 border border-green-500/20 mb-8 backdrop-blur-sm"
+            >
+              <span className="relative flex h-2.5 w-2.5">
                 <span className="animate-ping absolute h-full w-full rounded-full bg-green-400 opacity-75" />
-                <span className="relative rounded-full h-2 w-2 bg-green-500" />
+                <span className="relative rounded-full h-2.5 w-2.5 bg-green-500" />
               </span>
-              Live Results
-            </span>
-            <h2 className="text-4xl md:text-6xl font-bold text-white mb-6">
+              <span className="font-medium">Live Results</span>
+              <span className="h-4 w-px bg-green-500/30" />
+              <span className="text-green-300/70 text-xs">Updated in real-time</span>
+            </motion.div>
+
+            <h2 className="text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-6 tracking-tight">
               SEO Services That
               <br />
-              <span className="bg-gradient-to-r from-green-400 to-emerald-400 bg-clip-text text-transparent">
-                Deliver Results
+              <span className="relative">
+                <span className="bg-gradient-to-r from-green-400 via-emerald-400 to-cyan-400 bg-clip-text text-transparent">
+                  Deliver Results
+                </span>
+                {/* Underline accent */}
+                <motion.span
+                  initial={{ scaleX: 0 }}
+                  whileInView={{ scaleX: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: 0.5, duration: 0.8 }}
+                  className="absolute -bottom-2 left-0 right-0 h-1 bg-gradient-to-r from-green-500 via-emerald-500 to-cyan-500 rounded-full origin-left"
+                />
               </span>
             </h2>
+            <p className="text-lg text-neutral-400 max-w-2xl mx-auto mt-6">
+              Proven strategies backed by data. Real metrics from real campaigns.
+            </p>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          {/* Bento-style grid layout */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-6">
             {services.map((service, index) => (
               <motion.div
                 key={index}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
+                initial={{ opacity: 0, y: 40, scale: 0.95 }}
+                whileInView={{ opacity: 1, y: 0, scale: 1 }}
                 viewport={{ once: true }}
-                transition={{ delay: index * 0.1 }}
-                className="group relative p-8 rounded-3xl bg-gradient-to-br from-neutral-900/90 to-neutral-950/90 border border-white/5 hover:border-green-500/30 transition-all duration-500 overflow-hidden"
+                transition={{ delay: index * 0.1, duration: 0.5, ease: "easeOut" }}
+                whileHover={{ y: -8, transition: { duration: 0.3 } }}
+                className={`group relative rounded-3xl bg-gradient-to-br from-neutral-900/95 to-neutral-950/95 border border-white/5 hover:border-green-500/40 transition-all duration-500 overflow-hidden backdrop-blur-xl ${
+                  index === 0 ? "lg:col-span-7 p-8" :
+                  index === 1 ? "lg:col-span-5 p-8" :
+                  index === 2 ? "lg:col-span-5 p-8" :
+                  "lg:col-span-7 p-8"
+                }`}
               >
-                {/* Hover glow */}
-                <div className={`absolute inset-0 bg-gradient-to-br ${service.gradient} opacity-0 group-hover:opacity-5 transition-opacity duration-500`} />
+                {/* Animated gradient border on hover */}
+                <div className={`absolute inset-0 bg-gradient-to-br ${service.gradient} opacity-0 group-hover:opacity-[0.08] transition-opacity duration-700`} />
+
+                {/* Corner accent */}
+                <div className={`absolute top-0 right-0 w-32 h-32 bg-gradient-to-bl ${service.gradient} opacity-5 blur-2xl group-hover:opacity-10 transition-opacity`} />
+
+                {/* Animated lines */}
+                <div className="absolute top-0 left-8 right-8 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
                 {service.badge && (
-                  <span className="absolute top-6 right-6 px-3 py-1 rounded-full text-xs font-medium bg-green-500/20 text-green-400 border border-green-500/30">
+                  <motion.span
+                    initial={{ x: 20, opacity: 0 }}
+                    whileInView={{ x: 0, opacity: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: 0.3 }}
+                    className="absolute top-6 right-6 px-4 py-1.5 rounded-full text-xs font-semibold bg-gradient-to-r from-green-500/20 to-emerald-500/20 text-green-400 border border-green-500/30 shadow-lg shadow-green-500/10"
+                  >
                     {service.badge}
-                  </span>
+                  </motion.span>
                 )}
 
-                <div className="relative z-10">
-                  <div className={`w-14 h-14 rounded-xl bg-gradient-to-br ${service.gradient} p-0.5 mb-6`}>
-                    <div className="w-full h-full rounded-xl bg-black flex items-center justify-center">
-                      <service.icon className="w-7 h-7 text-white" />
+                <div className="relative z-10 h-full flex flex-col">
+                  {/* Icon with glow effect */}
+                  <div className="relative mb-6">
+                    <div className={`absolute inset-0 w-16 h-16 bg-gradient-to-br ${service.gradient} rounded-2xl blur-xl opacity-30 group-hover:opacity-50 transition-opacity`} />
+                    <div className={`relative w-16 h-16 rounded-2xl bg-gradient-to-br ${service.gradient} p-[2px]`}>
+                      <div className="w-full h-full rounded-2xl bg-black/90 flex items-center justify-center backdrop-blur-xl">
+                        <service.icon className="w-8 h-8 text-white" />
+                      </div>
                     </div>
                   </div>
 
-                  <h3 className="text-2xl font-bold text-white mb-3">{service.title}</h3>
-                  <p className="text-neutral-400 mb-6 leading-relaxed">{service.description}</p>
+                  <h3 className="text-2xl md:text-3xl font-bold text-white mb-3 group-hover:text-green-50 transition-colors">{service.title}</h3>
+                  <p className="text-neutral-400 mb-8 leading-relaxed text-base flex-grow">{service.description}</p>
 
-                  {/* Live metrics display */}
-                  <div className="grid grid-cols-2 gap-4 p-4 rounded-xl bg-black/50 border border-white/5">
+                  {/* Enhanced metrics display */}
+                  <div className="grid grid-cols-2 gap-4">
                     {service.metrics.map((metric, i) => (
-                      <div key={i}>
-                        <div className="text-xs text-neutral-500 uppercase tracking-wider mb-1">
-                          {metric.label}
+                      <motion.div
+                        key={i}
+                        initial={{ opacity: 0, y: 10 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ delay: 0.4 + i * 0.1 }}
+                        className="relative p-4 rounded-2xl bg-gradient-to-br from-black/60 to-black/40 border border-white/5 group-hover:border-white/10 transition-colors overflow-hidden"
+                      >
+                        {/* Subtle gradient overlay */}
+                        <div className={`absolute inset-0 bg-gradient-to-br ${service.gradient} opacity-[0.03]`} />
+
+                        <div className="relative">
+                          <div className="text-[10px] text-neutral-500 uppercase tracking-widest font-medium mb-2">
+                            {metric.label}
+                          </div>
+                          <div className="flex items-baseline gap-1">
+                            <span className={`text-2xl md:text-3xl font-bold bg-gradient-to-r ${service.gradient} bg-clip-text text-transparent`}>
+                              {metric.value}
+                            </span>
+                          </div>
+                          {/* Mini progress indicator */}
+                          <div className="mt-3 h-1 rounded-full bg-white/5 overflow-hidden">
+                            <motion.div
+                              initial={{ width: 0 }}
+                              whileInView={{ width: "100%" }}
+                              viewport={{ once: true }}
+                              transition={{ delay: 0.6 + i * 0.2, duration: 1 }}
+                              className={`h-full rounded-full bg-gradient-to-r ${service.gradient}`}
+                            />
+                          </div>
                         </div>
-                        <div className={`text-xl font-bold bg-gradient-to-r ${service.gradient} bg-clip-text text-transparent`}>
-                          {metric.value}
-                        </div>
-                      </div>
+                      </motion.div>
                     ))}
                   </div>
                 </div>
               </motion.div>
             ))}
           </div>
+
+          {/* Bottom CTA hint */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.5 }}
+            className="flex justify-center mt-12"
+          >
+            <Link href="/contact" className="group inline-flex items-center gap-3 text-neutral-400 hover:text-green-400 transition-colors">
+              <span className="text-sm">See how we can help your business</span>
+              <IconArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+            </Link>
+          </motion.div>
         </div>
       </section>
 
@@ -421,42 +572,265 @@ export default function SEOPage() {
         </div>
       </section>
 
-      {/* Benefits Grid */}
-      <section className="relative py-32 overflow-hidden">
-        <div className="absolute inset-0 bg-grid-white/[0.02]" />
+      {/* Benefits Grid - Premium Design */}
+      <section className="relative py-40 overflow-hidden">
+        {/* Complex layered background */}
+        <div className="absolute inset-0">
+          {/* Animated gradient mesh */}
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(34,197,94,0.15),transparent_50%)]" />
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_right,rgba(16,185,129,0.1),transparent_50%)]" />
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_left,rgba(6,182,212,0.08),transparent_50%)]" />
+
+          {/* Animated grid */}
+          <div className="absolute inset-0 bg-[linear-gradient(rgba(34,197,94,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(34,197,94,0.03)_1px,transparent_1px)] bg-[size:60px_60px] [mask-image:radial-gradient(ellipse_at_center,black_30%,transparent_70%)]" />
+        </div>
+
+        {/* Floating orbs */}
+        <motion.div
+          animate={{ y: [0, -30, 0], x: [0, 20, 0] }}
+          transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+          className="absolute top-20 left-[15%] w-64 h-64 bg-green-500/10 rounded-full blur-[100px]"
+        />
+        <motion.div
+          animate={{ y: [0, 40, 0], x: [0, -30, 0] }}
+          transition={{ duration: 10, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+          className="absolute bottom-20 right-[15%] w-80 h-80 bg-emerald-500/10 rounded-full blur-[120px]"
+        />
+        <motion.div
+          animate={{ y: [0, 20, 0] }}
+          transition={{ duration: 6, repeat: Infinity, ease: "easeInOut", delay: 2 }}
+          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-cyan-500/5 rounded-full blur-[150px]"
+        />
+
+        {/* Decorative floating elements */}
+        {[...Array(6)].map((_, i) => (
+          <motion.div
+            key={i}
+            animate={{
+              y: [0, -20, 0],
+              opacity: [0.3, 0.6, 0.3],
+            }}
+            transition={{
+              duration: 4 + i,
+              repeat: Infinity,
+              delay: i * 0.5,
+            }}
+            className="absolute w-1 h-1 bg-green-400 rounded-full"
+            style={{
+              left: `${15 + i * 15}%`,
+              top: `${20 + (i % 3) * 25}%`,
+            }}
+          />
+        ))}
 
         <div className="relative max-w-7xl mx-auto px-6">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-center mb-16"
-          >
-            <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
-              Why Our <span className="text-green-400">SEO Works</span>
-            </h2>
-            <p className="text-lg text-neutral-400">What makes our approach different</p>
-          </motion.div>
+          {/* Header with split design */}
+          <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-8 mb-20">
+            <motion.div
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              className="lg:max-w-2xl"
+            >
+              {/* Animated badge */}
+              <motion.div
+                initial={{ scale: 0.8, opacity: 0 }}
+                whileInView={{ scale: 1, opacity: 1 }}
+                viewport={{ once: true }}
+                className="inline-flex items-center gap-3 px-5 py-2.5 rounded-full text-sm bg-gradient-to-r from-green-500/10 via-emerald-500/10 to-cyan-500/10 border border-green-500/20 mb-8 backdrop-blur-sm"
+              >
+                <span className="flex items-center gap-2">
+                  <span className="relative flex h-2 w-2">
+                    <span className="animate-ping absolute h-full w-full rounded-full bg-green-400 opacity-75" />
+                    <span className="relative rounded-full h-2 w-2 bg-green-500" />
+                  </span>
+                  <span className="text-green-400 font-medium">Proven Methodology</span>
+                </span>
+                <span className="h-4 w-px bg-green-500/30" />
+                <span className="text-neutral-400">5 Core Pillars</span>
+              </motion.div>
 
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-6">
+              <h2 className="text-5xl md:text-6xl lg:text-7xl font-bold text-white leading-[1.1] tracking-tight">
+                Why Our{" "}
+                <span className="relative inline-block">
+                  <span className="bg-gradient-to-r from-green-400 via-emerald-400 to-cyan-400 bg-clip-text text-transparent">
+                    SEO Works
+                  </span>
+                  <motion.svg
+                    initial={{ pathLength: 0, opacity: 0 }}
+                    whileInView={{ pathLength: 1, opacity: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: 0.5, duration: 1 }}
+                    className="absolute -bottom-4 left-0 w-full h-4"
+                    viewBox="0 0 200 20"
+                    fill="none"
+                  >
+                    <motion.path
+                      d="M0 15 Q50 5 100 15 T200 15"
+                      stroke="url(#underline-gradient)"
+                      strokeWidth="3"
+                      strokeLinecap="round"
+                      fill="none"
+                    />
+                    <defs>
+                      <linearGradient id="underline-gradient" x1="0" y1="0" x2="200" y2="0">
+                        <stop offset="0%" stopColor="#22c55e" />
+                        <stop offset="50%" stopColor="#10b981" />
+                        <stop offset="100%" stopColor="#06b6d4" />
+                      </linearGradient>
+                    </defs>
+                  </motion.svg>
+                </span>
+              </h2>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              className="lg:text-right"
+            >
+              <p className="text-xl text-neutral-400 max-w-md">
+                What makes our approach different — and why it delivers{" "}
+                <span className="text-white font-medium">consistent results</span>
+              </p>
+            </motion.div>
+          </div>
+
+          {/* Premium Bento Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
             {benefits.map((benefit, index) => (
               <motion.div
                 key={index}
-                initial={{ opacity: 0, scale: 0.9 }}
-                whileInView={{ opacity: 1, scale: 1 }}
+                initial={{ opacity: 0, y: 50, rotateX: -10 }}
+                whileInView={{ opacity: 1, y: 0, rotateX: 0 }}
                 viewport={{ once: true }}
-                transition={{ delay: index * 0.1 }}
-                whileHover={{ y: -5 }}
-                className="group p-6 rounded-2xl bg-gradient-to-br from-neutral-900 to-neutral-950 border border-white/5 hover:border-green-500/30 transition-all"
+                transition={{ delay: index * 0.1, duration: 0.6, ease: "easeOut" }}
+                whileHover={{ y: -12, scale: 1.02, transition: { duration: 0.3 } }}
+                className={`group relative ${
+                  index === 0 ? "md:col-span-2 lg:col-span-1 lg:row-span-2" : ""
+                }`}
               >
-                <div className="p-3 rounded-xl bg-green-500/10 border border-green-500/20 w-fit mb-4 group-hover:scale-110 transition-transform">
-                  <benefit.icon className="w-6 h-6 text-green-400" />
+                <div className={`relative h-full rounded-[2rem] overflow-hidden ${
+                  index === 0 ? "min-h-[400px] lg:min-h-full" : "min-h-[280px]"
+                }`}>
+                  {/* Animated border gradient */}
+                  <div className="absolute inset-0 rounded-[2rem] p-[1px] bg-gradient-to-br from-white/10 via-transparent to-white/5 group-hover:from-green-500/50 group-hover:via-emerald-500/30 group-hover:to-cyan-500/50 transition-all duration-700">
+                    <div className="absolute inset-[1px] rounded-[calc(2rem-1px)] bg-gradient-to-br from-neutral-900 via-neutral-950 to-black" />
+                  </div>
+
+                  {/* Inner content */}
+                  <div className="relative h-full p-8 flex flex-col">
+                    {/* Gradient orb in corner */}
+                    <div className={`absolute -top-20 -right-20 w-40 h-40 bg-gradient-to-br ${benefit.gradient} rounded-full blur-[80px] opacity-20 group-hover:opacity-40 group-hover:scale-150 transition-all duration-700`} />
+
+                    {/* Icon container with morphing background */}
+                    <div className="relative z-10 mb-6">
+                      <div className={`absolute inset-0 w-20 h-20 bg-gradient-to-br ${benefit.gradient} rounded-2xl blur-2xl opacity-30 group-hover:opacity-60 group-hover:scale-110 transition-all duration-500`} />
+                      <motion.div
+                        whileHover={{ rotate: [0, -10, 10, 0] }}
+                        transition={{ duration: 0.5 }}
+                        className={`relative w-20 h-20 rounded-2xl bg-gradient-to-br ${benefit.gradient} p-[2px]`}
+                      >
+                        <div className="w-full h-full rounded-2xl bg-black/80 backdrop-blur-xl flex items-center justify-center">
+                          <benefit.icon className="w-10 h-10 text-white" />
+                        </div>
+                      </motion.div>
+                    </div>
+
+                    {/* Content */}
+                    <div className="relative z-10 flex-1 flex flex-col">
+                      <h3 className="text-2xl md:text-3xl font-bold text-white mb-3 group-hover:text-green-50 transition-colors">
+                        {benefit.title}
+                      </h3>
+                      <p className="text-neutral-400 text-lg leading-relaxed mb-6 flex-1">
+                        {benefit.description}
+                      </p>
+
+                      {/* Stat display */}
+                      <div className="mt-auto">
+                        <div className={`inline-flex items-center gap-4 px-5 py-3 rounded-2xl bg-gradient-to-r ${benefit.gradient} bg-opacity-10 border border-white/5 group-hover:border-white/10 transition-colors`} style={{ background: `linear-gradient(to right, rgba(0,0,0,0.5), rgba(0,0,0,0.3))` }}>
+                          <div className={`text-3xl md:text-4xl font-bold bg-gradient-to-r ${benefit.gradient} bg-clip-text text-transparent`}>
+                            {benefit.stat}
+                          </div>
+                          <div className="h-8 w-px bg-white/10" />
+                          <div className="text-sm text-neutral-400">
+                            {benefit.statLabel}
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Bottom accent line */}
+                    <motion.div
+                      initial={{ scaleX: 0 }}
+                      whileInView={{ scaleX: 1 }}
+                      viewport={{ once: true }}
+                      transition={{ delay: 0.5 + index * 0.1, duration: 0.8 }}
+                      className={`absolute bottom-0 left-8 right-8 h-[2px] bg-gradient-to-r ${benefit.gradient} origin-left opacity-50 group-hover:opacity-100 transition-opacity`}
+                    />
+                  </div>
                 </div>
-                <h3 className="text-lg font-bold text-white mb-1">{benefit.title}</h3>
-                <p className="text-sm text-neutral-500">{benefit.description}</p>
               </motion.div>
             ))}
           </div>
+
+          {/* Premium CTA Banner */}
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.3 }}
+            className="mt-20 relative"
+          >
+            <div className="absolute inset-0 rounded-[2rem] bg-gradient-to-r from-green-500/20 via-emerald-500/20 to-cyan-500/20 blur-xl" />
+            <div className="relative rounded-[2rem] p-[1px] bg-gradient-to-r from-green-500/50 via-emerald-500/50 to-cyan-500/50">
+              <div className="rounded-[calc(2rem-1px)] bg-gradient-to-r from-neutral-900 via-neutral-950 to-neutral-900 p-8 md:p-12">
+                <div className="flex flex-col lg:flex-row items-center justify-between gap-8">
+                  {/* Left side with stats */}
+                  <div className="flex flex-col sm:flex-row items-center gap-8">
+                    <div className="flex items-center gap-6">
+                      {[
+                        { value: "500+", label: "Clients" },
+                        { value: "98%", label: "Retention" },
+                        { value: "10x", label: "Avg. ROI" },
+                      ].map((stat, i) => (
+                        <div key={i} className="text-center">
+                          <div className="text-2xl md:text-3xl font-bold bg-gradient-to-r from-green-400 to-emerald-400 bg-clip-text text-transparent">
+                            {stat.value}
+                          </div>
+                          <div className="text-xs text-neutral-500 uppercase tracking-wider">
+                            {stat.label}
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                    <div className="hidden sm:block h-16 w-px bg-gradient-to-b from-transparent via-green-500/30 to-transparent" />
+                    <div className="text-center sm:text-left">
+                      <div className="text-white font-semibold text-lg">Ready to see real results?</div>
+                      <div className="text-neutral-400">Join hundreds of businesses ranking on page one</div>
+                    </div>
+                  </div>
+
+                  {/* CTA Button */}
+                  <Link href="/contact">
+                    <motion.button
+                      whileHover={{ scale: 1.05, boxShadow: "0 0 40px rgba(34,197,94,0.4)" }}
+                      whileTap={{ scale: 0.98 }}
+                      className="relative group/btn px-8 py-4 rounded-full overflow-hidden"
+                    >
+                      <div className="absolute inset-0 bg-gradient-to-r from-green-500 via-emerald-500 to-cyan-500" />
+                      <div className="absolute inset-0 bg-gradient-to-r from-green-400 via-emerald-400 to-cyan-400 opacity-0 group-hover/btn:opacity-100 transition-opacity" />
+                      <span className="relative flex items-center gap-2 text-black font-bold text-lg">
+                        Start Your SEO Journey
+                        <IconArrowRight className="w-5 h-5 group-hover/btn:translate-x-1 transition-transform" />
+                      </span>
+                    </motion.button>
+                  </Link>
+                </div>
+              </div>
+            </div>
+          </motion.div>
         </div>
       </section>
 

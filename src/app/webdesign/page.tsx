@@ -171,11 +171,15 @@ export default function WebDesignPage() {
   const y = useTransform(scrollYProgress, [0, 1], [0, -100]);
 
   return (
-    <main ref={containerRef} className="bg-black">
-      {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-        <ShootingStars />
+    <main ref={containerRef} className="bg-black relative">
+      {/* Global Star Background */}
+      <div className="fixed inset-0 z-0">
         <StarsBackground />
+        <ShootingStars />
+      </div>
+
+      {/* Hero Section */}
+      <section className="relative min-h-screen flex items-center justify-center overflow-hidden z-10">
         <Spotlight className="-top-40 left-0 md:left-60 md:-top-20" fill="blue" />
 
         <div className="absolute inset-0 bg-gradient-to-b from-blue-500/10 via-transparent to-transparent" />
@@ -255,11 +259,12 @@ export default function WebDesignPage() {
         <div className="absolute bottom-0 left-0 right-0 h-40 bg-gradient-to-t from-black to-transparent" />
       </section>
 
-      {/* Services Grid - Bento Style */}
-      <section className="relative py-32 overflow-hidden">
+      {/* Services Grid - Premium Bento Style */}
+      <section className="relative py-32 overflow-hidden z-10">
         <div className="absolute inset-0 bg-grid-white/[0.02]" />
         <div className="absolute top-0 left-1/4 w-[600px] h-[600px] bg-blue-500/10 rounded-full blur-[150px]" />
         <div className="absolute bottom-0 right-1/4 w-[400px] h-[400px] bg-purple-500/10 rounded-full blur-[120px]" />
+        <div className="absolute top-1/2 right-0 w-[300px] h-[300px] bg-cyan-500/10 rounded-full blur-[100px]" />
 
         <div className="relative max-w-7xl mx-auto px-6">
           <motion.div
@@ -268,66 +273,315 @@ export default function WebDesignPage() {
             viewport={{ once: true }}
             className="text-center mb-20"
           >
-            <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm bg-gradient-to-r from-blue-500/10 to-purple-500/10 text-blue-400 border border-blue-500/20 mb-6">
+            <motion.span
+              initial={{ scale: 0.9, opacity: 0 }}
+              whileInView={{ scale: 1, opacity: 1 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.1 }}
+              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-medium bg-gradient-to-r from-blue-500/10 to-purple-500/10 text-blue-400 border border-blue-500/20 mb-8"
+            >
+              <span className="relative flex h-2 w-2">
+                <span className="animate-ping absolute h-full w-full rounded-full bg-blue-400 opacity-75" />
+                <span className="relative rounded-full h-2 w-2 bg-blue-500" />
+              </span>
               Our Services
-            </span>
-            <h2 className="text-4xl md:text-6xl font-bold text-white mb-6">
+            </motion.span>
+            <h2 className="text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-6">
               Web Solutions That
               <br />
-              <span className="bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-blue-400 via-cyan-400 to-purple-400 bg-clip-text text-transparent">
                 Actually Convert
               </span>
             </h2>
+            <p className="text-lg text-neutral-400 max-w-2xl mx-auto">
+              From custom development to e-commerce, we build digital experiences that drive real business results
+            </p>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {services.map((service, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.1 }}
-                whileHover={{ y: -10 }}
-                className="group relative p-8 rounded-3xl bg-gradient-to-br from-neutral-900/90 to-neutral-950/90 border border-white/5 hover:border-white/20 transition-all duration-500 overflow-hidden"
-              >
-                {/* Hover glow */}
-                <div className={`absolute inset-0 bg-gradient-to-br ${service.gradient} opacity-0 group-hover:opacity-5 transition-opacity duration-500`} />
+          {/* Bento Grid Layout */}
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
+            {/* Full Stack - Large Featured Card */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.1 }}
+              className="lg:col-span-7 group"
+            >
+              <div className="relative h-full p-8 md:p-10 rounded-3xl bg-gradient-to-br from-neutral-900/90 to-neutral-950/90 border border-white/5 hover:border-blue-500/30 transition-all duration-500 overflow-hidden">
+                {/* Animated gradient border on hover */}
+                <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                  <div className="absolute inset-[1px] rounded-3xl bg-gradient-to-br from-neutral-900 to-neutral-950" />
+                </div>
+
+                {/* Background glow */}
+                <div className="absolute -top-24 -right-24 w-64 h-64 bg-blue-500/20 rounded-full blur-[100px] group-hover:bg-blue-500/30 transition-colors duration-500" />
+                <div className="absolute -bottom-24 -left-24 w-48 h-48 bg-cyan-500/10 rounded-full blur-[80px] group-hover:bg-cyan-500/20 transition-colors duration-500" />
 
                 {/* Badge */}
-                {service.badge && (
-                  <span className={`absolute top-6 right-6 px-3 py-1 rounded-full text-xs font-medium bg-gradient-to-r ${service.gradient} text-white`}>
-                    {service.badge}
-                  </span>
-                )}
+                <motion.span
+                  initial={{ x: 20, opacity: 0 }}
+                  whileInView={{ x: 0, opacity: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: 0.3 }}
+                  className="absolute top-6 right-6 px-4 py-1.5 rounded-full text-xs font-semibold bg-gradient-to-r from-blue-500 to-cyan-500 text-white shadow-lg shadow-blue-500/25"
+                >
+                  Full Stack
+                </motion.span>
 
                 <div className="relative z-10">
-                  <div className={`w-16 h-16 rounded-2xl bg-gradient-to-br ${service.gradient} p-0.5 mb-6`}>
-                    <div className="w-full h-full rounded-2xl bg-black flex items-center justify-center">
-                      <service.icon className="w-8 h-8 text-white" />
+                  {/* Icon with animated ring */}
+                  <div className="relative w-20 h-20 mb-8">
+                    <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-blue-500 to-cyan-500 opacity-20 blur-xl group-hover:opacity-40 transition-opacity duration-500" />
+                    <div className="relative w-full h-full rounded-2xl bg-gradient-to-br from-blue-500 to-cyan-500 p-[2px]">
+                      <div className="w-full h-full rounded-2xl bg-black flex items-center justify-center">
+                        <IconCode className="w-10 h-10 text-white" />
+                      </div>
                     </div>
                   </div>
 
-                  <h3 className="text-2xl font-bold text-white mb-3">{service.title}</h3>
-                  <p className="text-neutral-400 mb-6 leading-relaxed">{service.description}</p>
+                  <h3 className="text-3xl md:text-4xl font-bold text-white mb-4">Custom Development</h3>
+                  <p className="text-neutral-400 text-lg mb-8 leading-relaxed max-w-lg">
+                    Complete custom websites built from scratch using modern technologies. React, Next.js, Node.js with custom UI/UX and advanced functionality.
+                  </p>
 
-                  <div className="grid grid-cols-2 gap-2">
-                    {service.features.map((feature, i) => (
-                      <div key={i} className="flex items-center gap-2 text-sm text-neutral-500">
-                        <IconCheck className="w-4 h-4 text-green-400" />
-                        {feature}
-                      </div>
+                  {/* Tech Stack Pills */}
+                  <div className="flex flex-wrap gap-3 mb-8">
+                    {[
+                      { icon: IconBrandReact, label: "React" },
+                      { icon: IconBrandNextjs, label: "Next.js" },
+                      { icon: IconBrandTypescript, label: "TypeScript" },
+                      { icon: IconDatabase, label: "Database" },
+                    ].map((tech, i) => (
+                      <motion.div
+                        key={tech.label}
+                        initial={{ opacity: 0, scale: 0.8 }}
+                        whileInView={{ opacity: 1, scale: 1 }}
+                        viewport={{ once: true }}
+                        transition={{ delay: 0.4 + i * 0.1 }}
+                        className="flex items-center gap-2 px-4 py-2 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400 text-sm font-medium"
+                      >
+                        <tech.icon className="w-4 h-4" />
+                        {tech.label}
+                      </motion.div>
+                    ))}
+                  </div>
+
+                  {/* Features Grid */}
+                  <div className="grid grid-cols-2 gap-4">
+                    {services[0].features.map((feature, i) => (
+                      <motion.div
+                        key={i}
+                        initial={{ opacity: 0, x: -10 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ delay: 0.5 + i * 0.1 }}
+                        className="flex items-center gap-3 p-3 rounded-xl bg-white/5 border border-white/5"
+                      >
+                        <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-blue-500/20 to-cyan-500/20 flex items-center justify-center">
+                          <IconCheck className="w-4 h-4 text-blue-400" />
+                        </div>
+                        <span className="text-sm text-neutral-300 font-medium">{feature}</span>
+                      </motion.div>
                     ))}
                   </div>
                 </div>
-              </motion.div>
-            ))}
+              </div>
+            </motion.div>
+
+            {/* Shopify - Medium Card */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.2 }}
+              className="lg:col-span-5 group"
+            >
+              <div className="relative h-full p-8 rounded-3xl bg-gradient-to-br from-neutral-900/90 to-neutral-950/90 border border-white/5 hover:border-green-500/30 transition-all duration-500 overflow-hidden">
+                {/* Background glow */}
+                <div className="absolute -top-20 -right-20 w-48 h-48 bg-green-500/15 rounded-full blur-[80px] group-hover:bg-green-500/25 transition-colors duration-500" />
+
+                {/* Badge */}
+                <motion.span
+                  initial={{ scale: 0 }}
+                  whileInView={{ scale: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: 0.4, type: "spring" }}
+                  className="absolute top-6 right-6 px-4 py-1.5 rounded-full text-xs font-semibold bg-gradient-to-r from-green-500 to-emerald-500 text-white shadow-lg shadow-green-500/25 flex items-center gap-1.5"
+                >
+                  <span className="w-1.5 h-1.5 rounded-full bg-white animate-pulse" />
+                  Most Popular
+                </motion.span>
+
+                <div className="relative z-10">
+                  {/* Icon */}
+                  <div className="relative w-16 h-16 mb-6">
+                    <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-green-500 to-emerald-500 opacity-20 blur-lg group-hover:opacity-40 transition-opacity duration-500" />
+                    <div className="relative w-full h-full rounded-2xl bg-gradient-to-br from-green-500 to-emerald-500 p-[2px]">
+                      <div className="w-full h-full rounded-2xl bg-black flex items-center justify-center">
+                        <IconBrandShopee className="w-8 h-8 text-white" />
+                      </div>
+                    </div>
+                  </div>
+
+                  <h3 className="text-2xl font-bold text-white mb-3">Shopify E-Commerce</h3>
+                  <p className="text-neutral-400 mb-6 leading-relaxed">
+                    Theme customization, custom apps, payment gateway setup, and inventory management for your online store.
+                  </p>
+
+                  {/* Features */}
+                  <div className="space-y-3">
+                    {services[1].features.map((feature, i) => (
+                      <motion.div
+                        key={i}
+                        initial={{ opacity: 0, x: -10 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ delay: 0.5 + i * 0.08 }}
+                        className="flex items-center gap-3"
+                      >
+                        <div className="w-6 h-6 rounded-full bg-green-500/20 flex items-center justify-center flex-shrink-0">
+                          <IconCheck className="w-3.5 h-3.5 text-green-400" />
+                        </div>
+                        <span className="text-sm text-neutral-400">{feature}</span>
+                      </motion.div>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Decorative element */}
+                <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-green-500/0 via-green-500/50 to-green-500/0 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+              </div>
+            </motion.div>
+
+            {/* Webflow - Medium Card */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.3 }}
+              className="lg:col-span-5 group"
+            >
+              <div className="relative h-full p-8 rounded-3xl bg-gradient-to-br from-neutral-900/90 to-neutral-950/90 border border-white/5 hover:border-purple-500/30 transition-all duration-500 overflow-hidden">
+                {/* Background glow */}
+                <div className="absolute -bottom-20 -left-20 w-48 h-48 bg-purple-500/15 rounded-full blur-[80px] group-hover:bg-purple-500/25 transition-colors duration-500" />
+
+                <div className="relative z-10">
+                  {/* Icon */}
+                  <div className="relative w-16 h-16 mb-6">
+                    <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-purple-500 to-pink-500 opacity-20 blur-lg group-hover:opacity-40 transition-opacity duration-500" />
+                    <div className="relative w-full h-full rounded-2xl bg-gradient-to-br from-purple-500 to-pink-500 p-[2px]">
+                      <div className="w-full h-full rounded-2xl bg-black flex items-center justify-center">
+                        <IconBrandReact className="w-8 h-8 text-white" />
+                      </div>
+                    </div>
+                  </div>
+
+                  <h3 className="text-2xl font-bold text-white mb-3">Webflow Development</h3>
+                  <p className="text-neutral-400 mb-6 leading-relaxed">
+                    Responsive design with custom animations, CMS setup, and SEO optimization for marketing-focused sites.
+                  </p>
+
+                  {/* Features as horizontal pills */}
+                  <div className="flex flex-wrap gap-2">
+                    {services[2].features.map((feature, i) => (
+                      <motion.span
+                        key={i}
+                        initial={{ opacity: 0, scale: 0.8 }}
+                        whileInView={{ opacity: 1, scale: 1 }}
+                        viewport={{ once: true }}
+                        transition={{ delay: 0.5 + i * 0.08 }}
+                        className="px-4 py-2 rounded-full text-sm bg-purple-500/10 border border-purple-500/20 text-purple-300"
+                      >
+                        {feature}
+                      </motion.span>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Corner accent */}
+                <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-bl from-purple-500/10 to-transparent rounded-bl-full" />
+              </div>
+            </motion.div>
+
+            {/* WordPress - Medium Card */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.4 }}
+              className="lg:col-span-7 group"
+            >
+              <div className="relative h-full p-8 md:p-10 rounded-3xl bg-gradient-to-br from-neutral-900/90 to-neutral-950/90 border border-white/5 hover:border-orange-500/30 transition-all duration-500 overflow-hidden">
+                {/* Background glow */}
+                <div className="absolute -top-20 -left-20 w-48 h-48 bg-orange-500/15 rounded-full blur-[80px] group-hover:bg-orange-500/25 transition-colors duration-500" />
+                <div className="absolute -bottom-20 -right-20 w-36 h-36 bg-red-500/10 rounded-full blur-[60px] group-hover:bg-red-500/20 transition-colors duration-500" />
+
+                <div className="relative z-10 flex flex-col md:flex-row gap-8">
+                  <div className="flex-1">
+                    {/* Icon */}
+                    <div className="relative w-16 h-16 mb-6">
+                      <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-orange-500 to-red-500 opacity-20 blur-lg group-hover:opacity-40 transition-opacity duration-500" />
+                      <div className="relative w-full h-full rounded-2xl bg-gradient-to-br from-orange-500 to-red-500 p-[2px]">
+                        <div className="w-full h-full rounded-2xl bg-black flex items-center justify-center">
+                          <IconBrandWordpress className="w-8 h-8 text-white" />
+                        </div>
+                      </div>
+                    </div>
+
+                    <h3 className="text-2xl md:text-3xl font-bold text-white mb-3">WordPress & CMS</h3>
+                    <p className="text-neutral-400 mb-6 leading-relaxed">
+                      Theme development, plugin customization, e-commerce integration, and security hardening.
+                    </p>
+                  </div>
+
+                  {/* Features as vertical list with icons */}
+                  <div className="md:w-64 space-y-3">
+                    {services[3].features.map((feature, i) => (
+                      <motion.div
+                        key={i}
+                        initial={{ opacity: 0, x: 20 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ delay: 0.5 + i * 0.1 }}
+                        className="flex items-center gap-3 p-3 rounded-xl bg-gradient-to-r from-orange-500/10 to-transparent border border-orange-500/10 group/item hover:border-orange-500/30 transition-colors"
+                      >
+                        <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-orange-500/20 to-red-500/20 flex items-center justify-center flex-shrink-0">
+                          <IconCheck className="w-4 h-4 text-orange-400" />
+                        </div>
+                        <span className="text-sm text-neutral-300 font-medium">{feature}</span>
+                      </motion.div>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Bottom accent line */}
+                <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-orange-500/0 via-orange-500/50 to-red-500/0 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+              </div>
+            </motion.div>
           </div>
+
+          {/* Bottom CTA */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.5 }}
+            className="mt-16 text-center"
+          >
+            <p className="text-neutral-500 mb-6">Not sure which solution is right for you?</p>
+            <Link href="/contact">
+              <button className="group inline-flex items-center gap-2 px-8 py-4 rounded-full bg-gradient-to-r from-blue-500/10 to-purple-500/10 border border-white/10 hover:border-white/20 text-white font-medium transition-all duration-300 hover:shadow-lg hover:shadow-blue-500/10">
+                Get a Free Consultation
+                <IconArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+              </button>
+            </Link>
+          </motion.div>
         </div>
       </section>
 
       {/* Tech Stack - Animated Icons */}
-      <section className="relative py-24 border-y border-white/5 overflow-hidden">
+      <section className="relative py-24 border-y border-white/5 overflow-hidden z-10">
         <div className="absolute inset-0">
           <SparklesCore
             particleDensity={40}
@@ -368,7 +622,7 @@ export default function WebDesignPage() {
       </section>
 
       {/* Process - Premium Timeline */}
-      <section className="relative py-32 overflow-hidden">
+      <section className="relative py-32 overflow-hidden z-10">
         <div className="absolute inset-0 bg-gradient-to-b from-black via-blue-950/10 to-black" />
         <div className="absolute top-1/2 left-1/4 w-[600px] h-[600px] bg-blue-500/5 rounded-full blur-[200px]" />
         <div className="absolute top-1/2 right-1/4 w-[400px] h-[400px] bg-purple-500/5 rounded-full blur-[150px]" />
@@ -528,7 +782,7 @@ export default function WebDesignPage() {
       </section>
 
       {/* Why Choose Us - Premium Bento Grid */}
-      <section className="relative py-32 overflow-hidden">
+      <section className="relative py-32 overflow-hidden z-10">
         <div className="absolute inset-0 bg-grid-white/[0.02]" />
         <div className="absolute top-1/3 right-0 w-[500px] h-[500px] bg-blue-500/5 rounded-full blur-[150px]" />
         <div className="absolute bottom-1/3 left-0 w-[400px] h-[400px] bg-purple-500/5 rounded-full blur-[120px]" />
@@ -650,7 +904,7 @@ export default function WebDesignPage() {
       </section>
 
       {/* CTA Section */}
-      <section className="relative py-32 overflow-hidden">
+      <section className="relative py-32 overflow-hidden z-10">
         <BackgroundBeams className="opacity-40" />
 
         <div className="relative z-10 max-w-4xl mx-auto px-6 text-center">

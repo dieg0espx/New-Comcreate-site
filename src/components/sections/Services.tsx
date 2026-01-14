@@ -55,9 +55,7 @@ const services = [
 
 export function Services() {
   return (
-    <section id="services" className="relative py-32 bg-black overflow-hidden">
-      {/* Subtle background gradient */}
-      <div className="absolute inset-0 bg-gradient-to-b from-neutral-950 via-black to-neutral-950" />
+    <section id="services" className="relative py-32 overflow-hidden">
 
       <div className="relative max-w-7xl mx-auto px-6">
         <motion.div

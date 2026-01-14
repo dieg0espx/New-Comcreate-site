@@ -5,6 +5,7 @@ export { Stats } from "./Stats";
 export { Features } from "./Features";
 export { Testimonials } from "./Testimonials";
 export { CTA } from "./CTA";
+export { FAQ } from "./FAQ";
 export { ServiceHero } from "./ServiceHero";
 export { ServiceFeatures } from "./ServiceFeatures";
 export { ServiceProcess } from "./ServiceProcess";

@@ -71,7 +71,7 @@ function AnimatedNumber({ value, suffix }: { value: number; suffix: string }) {
 
 export function Stats() {
   return (
-    <section id="about" className="relative py-32 bg-black overflow-hidden">
+    <section id="about" className="relative py-32 overflow-hidden">
       {/* Subtle gradient line at top */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[1px] bg-gradient-to-r from-transparent via-blue-500/30 to-transparent" />
 

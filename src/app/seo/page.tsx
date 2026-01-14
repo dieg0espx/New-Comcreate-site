@@ -292,7 +292,7 @@ export default function SEOPage() {
               <span className="text-green-400 font-medium">SEO & Search Optimization</span>
             </motion.div>
 
-            <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold mb-8">
+            <h1 className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-bold mb-6 md:mb-8">
               <span className="text-white">Dominate</span>
               <br />
               <span className="bg-gradient-to-r from-green-400 via-emerald-400 to-cyan-400 bg-clip-text text-transparent">
@@ -300,7 +300,7 @@ export default function SEOPage() {
               </span>
             </h1>
 
-            <p className="text-xl md:text-2xl text-neutral-400 max-w-3xl mx-auto mb-12">
+            <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-neutral-400 max-w-3xl mx-auto mb-8 md:mb-12 px-4 sm:px-0">
               Data-driven SEO strategies that increase organic traffic,
               improve rankings, and drive qualified leads to your business.
             </p>
@@ -327,20 +327,20 @@ export default function SEOPage() {
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.5, duration: 0.8 }}
-            className="mt-20 grid grid-cols-2 md:grid-cols-4 gap-6"
+            className="mt-12 md:mt-20 grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 md:gap-6"
           >
             {stats.map((stat, i) => (
               <motion.div
                 key={i}
                 whileHover={{ scale: 1.05, y: -5 }}
-                className="relative group text-center p-6 rounded-2xl bg-gradient-to-br from-green-500/5 to-emerald-500/5 border border-green-500/10 backdrop-blur-sm overflow-hidden"
+                className="relative group text-center p-4 sm:p-6 rounded-2xl bg-gradient-to-br from-green-500/5 to-emerald-500/5 border border-green-500/10 backdrop-blur-sm overflow-hidden"
               >
                 <div className="absolute inset-0 bg-gradient-to-br from-green-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
-                <stat.icon className="w-8 h-8 text-green-400 mx-auto mb-3" />
-                <div className="text-3xl md:text-4xl font-bold text-white">
+                <stat.icon className="w-6 h-6 sm:w-8 sm:h-8 text-green-400 mx-auto mb-2 sm:mb-3" />
+                <div className="text-2xl sm:text-3xl md:text-4xl font-bold text-white">
                   {stat.value}
                 </div>
-                <div className="text-sm text-neutral-500 mt-1">{stat.label}</div>
+                <div className="text-xs sm:text-sm text-neutral-500 mt-1">{stat.label}</div>
               </motion.div>
             ))}
           </motion.div>
@@ -350,7 +350,7 @@ export default function SEOPage() {
       </section>
 
       {/* Services with Live Metrics */}
-      <section className="relative py-32 overflow-hidden">
+      <section className="relative py-16 md:py-24 lg:py-32 overflow-hidden">
         {/* Enhanced background effects */}
         <div className="absolute inset-0 bg-dot-white/[0.03] [mask-image:radial-gradient(ellipse_at_center,black_60%,transparent_100%)]" />
         <div className="absolute top-0 left-1/4 w-[800px] h-[800px] bg-green-500/8 rounded-full blur-[200px] animate-pulse" />
@@ -359,12 +359,12 @@ export default function SEOPage() {
         {/* Animated gradient line */}
         <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-green-500/50 to-transparent" />
 
-        <div className="relative max-w-7xl mx-auto px-6">
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-center mb-20"
+            className="text-center mb-12 md:mb-20"
           >
             {/* Enhanced badge */}
             <motion.div
@@ -382,7 +382,7 @@ export default function SEOPage() {
               <span className="text-green-300/70 text-xs">Updated in real-time</span>
             </motion.div>
 
-            <h2 className="text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-6 tracking-tight">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-white mb-4 md:mb-6 tracking-tight">
               SEO Services That
               <br />
               <span className="relative">

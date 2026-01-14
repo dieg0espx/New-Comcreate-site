@@ -130,7 +130,7 @@ export function ProjectsGrid({ projects }: ProjectsGridProps) {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5, delay: 0.3 }}
-          className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-12"
+          className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 mb-8 sm:mb-12"
         >
           {[
             { value: `${projects.length}+`, label: "Projects Delivered" },
@@ -140,10 +140,10 @@ export function ProjectsGrid({ projects }: ProjectsGridProps) {
           ].map((stat, i) => (
             <div
               key={i}
-              className="relative group rounded-2xl bg-white/5 border border-white/10 p-4 text-center hover:border-purple-500/30 transition-colors"
+              className="relative group rounded-2xl bg-white/5 border border-white/10 p-3 sm:p-4 text-center hover:border-purple-500/30 transition-colors"
             >
-              <div className="text-2xl md:text-3xl font-bold text-white mb-1">{stat.value}</div>
-              <div className="text-xs text-neutral-500">{stat.label}</div>
+              <div className="text-xl sm:text-2xl md:text-3xl font-bold text-white mb-1">{stat.value}</div>
+              <div className="text-[10px] sm:text-xs text-neutral-500">{stat.label}</div>
             </div>
           ))}
         </motion.div>
@@ -151,7 +151,7 @@ export function ProjectsGrid({ projects }: ProjectsGridProps) {
         {/* Projects Bento Grid */}
         <motion.div
           layout
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6"
         >
           {filteredProjects.map((project, index) => {
             const isLarge = index === 0 || index === 5;

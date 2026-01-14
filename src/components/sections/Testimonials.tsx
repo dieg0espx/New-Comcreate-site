@@ -105,7 +105,7 @@ export function Testimonials() {
           whileInView={{ opacity: 1 }}
           transition={{ duration: 0.8, delay: 0.4 }}
           viewport={{ once: true }}
-          className="mt-[10px]"
+          className="mt-[15px]"
         >
           <InfiniteMovingCards
             items={[...testimonials].reverse()}

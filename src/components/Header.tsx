@@ -21,15 +21,15 @@ export function Header() {
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50">
-      <div className="mx-auto max-w-7xl px-6 py-4">
-        <div className="relative flex items-center justify-between rounded-full border border-white/10 bg-black/50 backdrop-blur-xl px-6 py-3">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 py-3 sm:py-4">
+        <div className="relative flex items-center justify-between rounded-full border border-white/10 bg-black/50 backdrop-blur-xl px-4 sm:px-6 py-2 sm:py-3">
           <Link href="/" className="flex items-center">
             <Image
               src="/images/logo.png"
               alt="Comcreate"
               width={140}
               height={40}
-              className="h-8 w-auto"
+              className="h-6 sm:h-8 w-auto"
             />
           </Link>
 

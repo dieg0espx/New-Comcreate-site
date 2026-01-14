@@ -299,16 +299,16 @@ export default function WebDesignPage() {
           </motion.div>
 
           {/* Bento Grid Layout */}
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-4 sm:gap-6">
             {/* Full Stack - Large Featured Card */}
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.1 }}
-              className="lg:col-span-7 group"
+              className="md:col-span-2 lg:col-span-7 group"
             >
-              <div className="relative h-full p-8 md:p-10 rounded-3xl bg-gradient-to-br from-neutral-900/90 to-neutral-950/90 border border-white/5 hover:border-blue-500/30 transition-all duration-500 overflow-hidden">
+              <div className="relative h-full p-6 sm:p-8 md:p-10 rounded-3xl bg-gradient-to-br from-neutral-900/90 to-neutral-950/90 border border-white/5 hover:border-blue-500/30 transition-all duration-500 overflow-hidden">
                 {/* Animated gradient border on hover */}
                 <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
                   <div className="absolute inset-[1px] rounded-3xl bg-gradient-to-br from-neutral-900 to-neutral-950" />
@@ -340,7 +340,7 @@ export default function WebDesignPage() {
                     </div>
                   </div>
 
-                  <h3 className="text-3xl md:text-4xl font-bold text-white mb-4">Custom Development</h3>
+                  <h3 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-4">Custom Development</h3>
                   <p className="text-neutral-400 text-lg mb-8 leading-relaxed max-w-lg">
                     Complete custom websites built from scratch using modern technologies. React, Next.js, Node.js with custom UI/UX and advanced functionality.
                   </p>

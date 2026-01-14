@@ -101,7 +101,7 @@ function FloatingAstronaut() {
   return (
     <motion.div
       key={key}
-      className="absolute pointer-events-none z-20"
+      className="absolute pointer-events-none z-20 w-[150px] h-[150px] sm:w-[200px] sm:h-[200px] md:w-[280px] md:h-[280px] lg:w-[350px] lg:h-[350px]"
       initial={{
         left: `${path.startX}%`,
         top: `${path.startY}%`,
@@ -129,17 +129,13 @@ function FloatingAstronaut() {
         },
       }}
       onAnimationComplete={handleComplete}
-      style={{
-        width: 350,
-        height: 350,
-      }}
     >
       <Image
         src="/images/astronaut.png"
         alt="Floating astronaut"
         width={350}
         height={350}
-        className="w-full h-full object-contain drop-shadow-[0_0_60px_rgba(96,165,250,0.7)]"
+        className="w-full h-full object-contain drop-shadow-[0_0_40px_rgba(96,165,250,0.5)] md:drop-shadow-[0_0_60px_rgba(96,165,250,0.7)]"
       />
     </motion.div>
   );
@@ -187,7 +183,7 @@ export function Hero() {
           <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold text-white tracking-tight leading-[1.1]">
             Ignite your brand with
           </h1>
-          <div className="relative flex items-center justify-center overflow-visible">
+          <div className="relative flex items-center justify-center overflow-visible -mt-2">
             <AnimatePresence mode="wait">
               <motion.span
                 key={textIndex}
@@ -195,7 +191,7 @@ export function Hero() {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -30 }}
                 transition={{ duration: 0.4 }}
-                className="text-5xl md:text-7xl lg:text-8xl font-bold bg-gradient-to-r from-blue-400 via-blue-500 to-purple-500 bg-clip-text text-transparent leading-relaxed pb-2"
+                className="text-5xl md:text-7xl lg:text-8xl font-bold bg-gradient-to-r from-blue-400 via-blue-500 to-purple-500 bg-clip-text text-transparent leading-tight"
               >
                 {rotatingTexts[textIndex]}
               </motion.span>

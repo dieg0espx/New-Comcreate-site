@@ -27,26 +27,30 @@ const contactDetails = [
     label: "Phone",
     value: "(619) 955-0105",
     href: "tel:6199550105",
-    color: "blue",
+    bgClass: "from-blue-500/10 to-blue-600/5 border-blue-500/20",
+    iconClass: "text-blue-400",
   },
   {
     icon: IconMail,
     label: "Email",
     value: "sales@comcreate.org",
     href: "mailto:sales@comcreate.org",
-    color: "purple",
+    bgClass: "from-purple-500/10 to-purple-600/5 border-purple-500/20",
+    iconClass: "text-purple-400",
   },
   {
     icon: IconMapPin,
     label: "Location",
     value: "San Diego, California",
-    color: "pink",
+    bgClass: "from-pink-500/10 to-pink-600/5 border-pink-500/20",
+    iconClass: "text-pink-400",
   },
   {
     icon: IconClock,
     label: "Hours",
     value: "Mon-Fri: 9AM - 6PM PST",
-    color: "cyan",
+    bgClass: "from-cyan-500/10 to-cyan-600/5 border-cyan-500/20",
+    iconClass: "text-cyan-400",
   },
 ];
 
@@ -141,9 +145,9 @@ export default function ContactPage() {
               <motion.div
                 key={index}
                 whileHover={{ scale: 1.05, y: -5 }}
-                className={`p-4 rounded-2xl bg-gradient-to-br from-${item.color}-500/10 to-${item.color}-600/5 border border-${item.color}-500/20 backdrop-blur-sm`}
+                className={`p-3 sm:p-4 rounded-2xl bg-gradient-to-br ${item.bgClass} border backdrop-blur-sm`}
               >
-                <item.icon className={`w-6 h-6 text-${item.color}-400 mx-auto mb-2`} />
+                <item.icon className={`w-5 h-5 sm:w-6 sm:h-6 ${item.iconClass} mx-auto mb-2`} />
                 <p className="text-xs text-neutral-500 mb-1">{item.label}</p>
                 {item.href ? (
                   <a href={item.href} className="text-sm text-white hover:text-blue-400 transition-colors">
@@ -161,13 +165,13 @@ export default function ContactPage() {
       </section>
 
       {/* Main Contact Section */}
-      <section className="relative py-24 overflow-hidden">
+      <section className="relative py-16 md:py-24 overflow-hidden">
         <div className="absolute inset-0 bg-dot-white/[0.03]" />
         <div className="absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-blue-500/5 rounded-full blur-[150px]" />
         <div className="absolute bottom-1/4 right-1/4 w-[400px] h-[400px] bg-purple-500/5 rounded-full blur-[120px]" />
 
-        <div className="relative max-w-7xl mx-auto px-6">
-          <div className="grid grid-cols-1 lg:grid-cols-5 gap-12">
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6">
+          <div className="grid grid-cols-1 lg:grid-cols-5 gap-8 lg:gap-12">
             {/* Contact Form - Takes 3 columns */}
             <motion.div
               initial={{ opacity: 0, x: -30 }}
@@ -175,7 +179,7 @@ export default function ContactPage() {
               viewport={{ once: true }}
               className="lg:col-span-3"
             >
-              <div className="p-8 md:p-10 rounded-3xl bg-gradient-to-br from-neutral-900/90 to-neutral-950/90 border border-white/5 backdrop-blur-sm">
+              <div className="p-6 sm:p-8 md:p-10 rounded-3xl bg-gradient-to-br from-neutral-900/90 to-neutral-950/90 border border-white/5 backdrop-blur-sm">
                 <div className="flex items-center gap-3 mb-8">
                   <div className="p-3 rounded-xl bg-blue-500/10 border border-blue-500/20">
                     <IconSend className="w-6 h-6 text-blue-400" />

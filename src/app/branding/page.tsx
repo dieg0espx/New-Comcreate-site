@@ -246,7 +246,7 @@ function BrandShowcase() {
   return (
     <div className="relative">
       {/* Main Logo Display */}
-      <div className="relative w-56 h-56 mx-auto mb-8">
+      <div className="relative w-40 h-40 sm:w-48 sm:h-48 md:w-56 md:h-56 mx-auto mb-6 sm:mb-8">
         {/* Glow effect */}
         <div className={`absolute inset-0 bg-gradient-to-br ${brands[activeIndex].gradient} opacity-30 blur-3xl rounded-full`} />
 
@@ -262,7 +262,7 @@ function BrandShowcase() {
             }}
             transition={{ duration: 0.6, ease: "easeInOut" }}
           >
-            <span className="text-8xl font-bold text-white drop-shadow-lg">{brand.letter}</span>
+            <span className="text-6xl sm:text-7xl md:text-8xl font-bold text-white drop-shadow-lg">{brand.letter}</span>
           </motion.div>
         ))}
       </div>

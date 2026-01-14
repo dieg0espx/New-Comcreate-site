@@ -301,7 +301,7 @@ export default function AdsPage() {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.5 }}
-              className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto"
+              className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 max-w-4xl mx-auto"
             >
               {[
                 { value: "$10M+", label: "Ad Spend Managed", gradient: "from-purple-500 to-pink-500" },
@@ -315,12 +315,12 @@ export default function AdsPage() {
                   animate={{ opacity: 1, scale: 1 }}
                   transition={{ delay: 0.6 + i * 0.1 }}
                   whileHover={{ scale: 1.05, y: -5 }}
-                  className="group p-6 rounded-2xl bg-gradient-to-br from-neutral-900/80 to-neutral-950/80 border border-white/5 hover:border-purple-500/20 transition-all"
+                  className="group p-4 sm:p-6 rounded-2xl bg-gradient-to-br from-neutral-900/80 to-neutral-950/80 border border-white/5 hover:border-purple-500/20 transition-all"
                 >
-                  <div className={`text-3xl md:text-4xl font-bold bg-gradient-to-r ${stat.gradient} bg-clip-text text-transparent`}>
+                  <div className={`text-2xl sm:text-3xl md:text-4xl font-bold bg-gradient-to-r ${stat.gradient} bg-clip-text text-transparent`}>
                     {stat.value}
                   </div>
-                  <div className="text-sm text-neutral-500 mt-1">{stat.label}</div>
+                  <div className="text-xs sm:text-sm text-neutral-500 mt-1">{stat.label}</div>
                 </motion.div>
               ))}
             </motion.div>

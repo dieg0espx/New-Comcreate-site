@@ -2,6 +2,7 @@
 
 import { cn } from "@/lib/utils";
 import React, { useEffect, useState } from "react";
+import { IconStarFilled } from "@tabler/icons-react";
 
 export const InfiniteMovingCards = ({
   items,
@@ -87,7 +88,7 @@ export const InfiniteMovingCards = ({
       <ul
         ref={scrollerRef}
         className={cn(
-          "flex w-max min-w-full shrink-0 flex-nowrap gap-4 py-4",
+          "flex w-max min-w-full shrink-0 flex-nowrap gap-4",
           start && "animate-scroll",
           pauseOnHover && "hover:[animation-play-state:paused]"
         )}
@@ -102,6 +103,11 @@ export const InfiniteMovingCards = ({
                 aria-hidden="true"
                 className="user-select-none -z-1 pointer-events-none absolute -left-0.5 -top-0.5 h-[calc(100%_+_4px)] w-[calc(100%_+_4px)]"
               />
+              <div className="flex gap-0.5 mb-3">
+                {[...Array(5)].map((_, i) => (
+                  <IconStarFilled key={i} size={14} className="text-yellow-400" />
+                ))}
+              </div>
               <span className="relative z-20 text-sm leading-[1.6] font-normal text-neutral-300">
                 &ldquo;{item.quote}&rdquo;
               </span>

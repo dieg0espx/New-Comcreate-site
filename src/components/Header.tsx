@@ -86,6 +86,14 @@ export function Header() {
               Projects
             </Link>
 
+            {/* Blog Link */}
+            <Link
+              href="/blogs"
+              className="text-sm text-neutral-400 hover:text-white transition-colors"
+            >
+              Blog
+            </Link>
+
             {/* Contact Link */}
             <Link
               href="/contact"
@@ -152,6 +160,13 @@ export function Header() {
                   onClick={() => setIsOpen(false)}
                 >
                   Projects
+                </Link>
+                <Link
+                  href="/blogs"
+                  className="text-lg text-neutral-400 hover:text-white transition-colors"
+                  onClick={() => setIsOpen(false)}
+                >
+                  Blog
                 </Link>
                 <Link
                   href="/contact"

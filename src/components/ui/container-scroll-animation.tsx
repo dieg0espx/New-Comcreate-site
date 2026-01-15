@@ -39,6 +39,10 @@ export const ContainerScroll = ({
       className="h-[35rem] md:h-[50rem] flex items-start justify-center relative p-2 md:p-4 -mt-[200px] md:-mt-[250px] overflow-visible"
       ref={containerRef}
     >
+      {/* Glow effect behind the card */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80%] h-[60%] bg-blue-500/20 rounded-full blur-[120px] pointer-events-none" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/3 w-[60%] h-[40%] bg-purple-500/15 rounded-full blur-[100px] pointer-events-none" />
+
       <div
         className="py-0 w-full relative overflow-visible"
         style={{
@@ -85,11 +89,14 @@ export const Card = ({
 }) => {
   return (
     <motion.div
+      initial={{ opacity: 0, y: 100 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.8, delay: 1.3, ease: "easeOut" }}
       style={{
         rotateX: rotate,
         scale,
         boxShadow:
-          "0 0 #0000004d, 0 9px 20px #0000004a, 0 37px 37px #00000042, 0 84px 50px #00000026, 0 149px 60px #0000000a, 0 233px 65px #00000003",
+          "0 0 60px rgba(59, 130, 246, 0.3), 0 0 120px rgba(139, 92, 246, 0.2), 0 9px 20px #0000004a, 0 37px 37px #00000042",
       }}
       className="max-w-5xl -mt-12 mx-auto h-[30rem] md:h-[40rem] w-full border-4 border-[#6C6C6C] p-2 md:p-6 bg-[#222222] rounded-[30px] shadow-2xl"
     >

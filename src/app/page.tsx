@@ -1,5 +1,6 @@
 import {
   Hero,
+  HeroScroll,
   GlobeSection,
   Services,
   AllInOneSolution,
@@ -24,6 +25,7 @@ export default function Home() {
 
       <div className="relative z-10">
         <Hero />
+        <HeroScroll />
         <GlobeSection />
         <Features />
         <AllInOneSolution />

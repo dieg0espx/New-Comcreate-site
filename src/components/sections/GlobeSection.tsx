@@ -40,7 +40,7 @@ const colorClasses: Record<string, { bg: string; text: string; border: string }>
 
 export function GlobeSection() {
   return (
-    <section className="relative py-24 overflow-hidden">
+    <section className="relative py-24 overflow-hidden -mt-[200px]">
 
       <div className="relative max-w-7xl mx-auto px-6">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">

@@ -1,4 +1,4 @@
-export { Hero } from "./Hero";
+export { Hero, HeroScroll } from "./Hero";
 export { GlobeSection } from "./GlobeSection";
 export { Services } from "./Services";
 export { AllInOneSolution } from "./AllInOneSolution";

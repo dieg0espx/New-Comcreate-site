@@ -4,6 +4,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { ShinyButton } from "@/components/ui/shiny-button";
 import { TextHoverEffect } from "@/components/ui/text-hover-effect";
 import { TextGenerateEffect } from "@/components/ui/text-generate-effect";
+import { ContainerScroll } from "@/components/ui/container-scroll-animation";
 import Link from "next/link";
 import Image from "next/image";
 import { useState, useEffect } from "react";
@@ -162,22 +163,22 @@ export function Hero() {
       <div className="absolute bottom-1/4 -right-1/4 w-[400px] h-[400px] bg-purple-500/20 rounded-full blur-[100px] pointer-events-none" />
 
       {/* Content */}
-      <div className="relative z-10 max-w-7xl mx-auto px-6 py-32 text-center">
+      <div className="relative z-10 max-w-7xl mx-auto px-6 py-20 text-center -mt-[100px]">
+
+        {/* Text Hover Effect - Now on top */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          className="mb-6"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.8, delay: 0.1 }}
+          className="h-16 md:h-20 lg:h-24 w-full max-w-4xl mx-auto -mb-4 md:-mb-6"
         >
-          <span className="inline-block px-4 py-2 rounded-full text-sm font-medium bg-blue-500/10 text-blue-400 border border-blue-500/20 backdrop-blur-sm">
-            San Diego&apos;s Premier Digital Agency
-          </span>
+          <TextHoverEffect text="Web • SEO • Ads" duration={0.15} />
         </motion.div>
 
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.1 }}
+          transition={{ duration: 0.6, delay: 0.2 }}
           className="mb-2"
         >
           <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold text-white tracking-tight leading-[1.1]">
@@ -197,16 +198,6 @@ export function Hero() {
               </motion.span>
             </AnimatePresence>
           </div>
-        </motion.div>
-
-        {/* Text Hover Effect */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.8, delay: 0.3 }}
-          className="h-24 md:h-32 lg:h-40 w-full max-w-5xl mx-auto mb-4"
-        >
-          <TextHoverEffect text="Web • SEO • Ads" duration={0.15} />
         </motion.div>
 
         <motion.p
@@ -244,3 +235,22 @@ export function Hero() {
     </section>
   );
 }
+
+function HeroScroll() {
+  return (
+    <div className="flex flex-col overflow-visible">
+      <ContainerScroll titleComponent={<></>}>
+        <img
+          src="/images/inbox-dashboard.png"
+          alt="Dashboard preview"
+          height={720}
+          width={1400}
+          className="mx-auto rounded-2xl object-cover h-full object-left-top"
+          draggable={false}
+        />
+      </ContainerScroll>
+    </div>
+  );
+}
+
+export { HeroScroll };

@@ -6,14 +6,31 @@ import { motion } from "framer-motion";
 export const TextHoverEffect = ({
   text,
   duration,
+  automatic = false,
 }: {
   text: string;
   duration?: number;
+  automatic?: boolean;
 }) => {
   const svgRef = useRef<SVGSVGElement>(null);
   const [cursor, setCursor] = useState({ x: 0, y: 0 });
   const [hovered, setHovered] = useState(false);
   const [maskPosition, setMaskPosition] = useState({ cx: "50%", cy: "50%" });
+
+  // Automatic animation effect
+  useEffect(() => {
+    if (!automatic) return;
+
+    const animate = () => {
+      const time = Date.now() / 1000;
+      const cx = 50 + Math.sin(time * 0.5) * 40;
+      const cy = 50 + Math.cos(time * 0.3) * 30;
+      setMaskPosition({ cx: `${cx}%`, cy: `${cy}%` });
+    };
+
+    const interval = setInterval(animate, 16);
+    return () => clearInterval(interval);
+  }, [automatic]);
 
   useEffect(() => {
     if (svgRef.current && cursor.x !== null && cursor.y !== null) {
@@ -47,7 +64,7 @@ export const TextHoverEffect = ({
           cy="50%"
           r="25%"
         >
-          {hovered && (
+          {(hovered || automatic) && (
             <>
               <stop offset="0%" stopColor="#3b82f6" />
               <stop offset="25%" stopColor="#8b5cf6" />
@@ -85,7 +102,7 @@ export const TextHoverEffect = ({
         dominantBaseline="middle"
         strokeWidth="0.6"
         className="fill-transparent stroke-neutral-700 font-bold"
-        style={{ opacity: hovered ? 0.7 : 0, fontSize: "5rem" }}
+        style={{ opacity: (hovered || automatic) ? 0.7 : 0, fontSize: "5rem" }}
       >
         {text}
       </text>

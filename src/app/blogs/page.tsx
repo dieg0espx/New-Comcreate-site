@@ -19,6 +19,7 @@ const blogPosts: BlogPost[] = [
     readTime: "8 min read",
     date: "Jan 15, 2025",
     gradient: "from-green-500 to-emerald-500",
+    image: "/images/blog/seo-strategies-hero.jpg",
     featured: true,
   },
   {
@@ -30,6 +31,7 @@ const blogPosts: BlogPost[] = [
     readTime: "10 min read",
     date: "Jan 12, 2025",
     gradient: "from-blue-500 to-cyan-500",
+    image: "/images/blog/google-maps-local-pack.png",
   },
   {
     slug: "how-long-does-seo-take",
@@ -40,6 +42,7 @@ const blogPosts: BlogPost[] = [
     readTime: "9 min read",
     date: "Jan 8, 2025",
     gradient: "from-purple-500 to-pink-500",
+    image: "/images/blog/seo-timeline-hero.png",
   },
 ];
 

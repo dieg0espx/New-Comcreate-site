@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import Link from "next/link";
+import Image from "next/image";
 import { IconClock, IconArrowRight } from "@tabler/icons-react";
 import { cn } from "@/lib/utils";
 import { GlowingEffect } from "@/components/ui/glowing-effect";
@@ -14,6 +15,7 @@ export interface BlogPost {
   readTime: string;
   date: string;
   gradient: string;
+  image: string;
   featured?: boolean;
 }
 
@@ -56,24 +58,30 @@ export function BlogCard({ post, index, isHovered, onHover }: BlogCardProps) {
             isHovered && "border-white/20"
           )}
         >
-          {/* Gradient Header */}
+          {/* Image Header */}
           <div
             className={cn(
-              "relative h-32 overflow-hidden",
-              post.featured && "h-40"
+              "relative h-40 overflow-hidden",
+              post.featured && "h-52"
             )}
           >
+            <Image
+              src={post.image}
+              alt={post.title}
+              fill
+              className="object-cover transition-transform duration-500 group-hover:scale-105"
+            />
             <div
               className={cn(
-                "absolute inset-0 bg-gradient-to-br opacity-80",
+                "absolute inset-0 bg-gradient-to-br opacity-40",
                 post.gradient
               )}
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-neutral-900 via-transparent to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-t from-neutral-900 via-neutral-900/20 to-transparent" />
 
             {/* Category Badge */}
             <div className="absolute top-4 left-4">
-              <span className="px-3 py-1.5 rounded-full text-xs font-semibold bg-black/30 backdrop-blur-sm text-white border border-white/20">
+              <span className="px-3 py-1.5 rounded-full text-xs font-semibold bg-black/50 backdrop-blur-sm text-white border border-white/20">
                 {post.category}
               </span>
             </div>

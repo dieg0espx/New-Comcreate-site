@@ -172,7 +172,7 @@ export function Hero() {
           transition={{ duration: 0.8, delay: 0.1 }}
           className="h-16 md:h-20 lg:h-24 w-full max-w-4xl mx-auto -mb-4 md:-mb-6"
         >
-          <TextHoverEffect text="Web • SEO • Ads" duration={0.15} />
+          <TextHoverEffect text="Web • SEO • Ads" duration={0.15} automatic />
         </motion.div>
 
         <motion.div

@@ -102,7 +102,7 @@ function FloatingAstronaut() {
   return (
     <motion.div
       key={key}
-      className="absolute pointer-events-none z-20 w-[150px] h-[150px] sm:w-[200px] sm:h-[200px] md:w-[280px] md:h-[280px] lg:w-[350px] lg:h-[350px]"
+      className="absolute pointer-events-none z-20 hidden sm:block sm:w-[200px] sm:h-[200px] md:w-[280px] md:h-[280px] lg:w-[350px] lg:h-[350px]"
       initial={{
         left: `${path.startX}%`,
         top: `${path.startY}%`,
@@ -155,22 +155,89 @@ export function Hero() {
 
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Single Floating Astronaut */}
+      {/* Single Floating Astronaut - hidden on mobile */}
       <FloatingAstronaut />
 
       {/* Gradient orbs */}
-      <div className="absolute top-1/4 -left-1/4 w-[500px] h-[500px] bg-blue-500/30 rounded-full blur-[120px] pointer-events-none" />
-      <div className="absolute bottom-1/4 -right-1/4 w-[400px] h-[400px] bg-purple-500/20 rounded-full blur-[100px] pointer-events-none" />
+      <div className="absolute top-1/4 -left-1/4 w-[300px] sm:w-[500px] h-[300px] sm:h-[500px] bg-blue-500/30 rounded-full blur-[80px] sm:blur-[120px] pointer-events-none" />
+      <div className="absolute bottom-1/4 -right-1/4 w-[250px] sm:w-[400px] h-[250px] sm:h-[400px] bg-purple-500/20 rounded-full blur-[60px] sm:blur-[100px] pointer-events-none" />
 
-      {/* Content */}
-      <div className="relative z-10 max-w-7xl mx-auto px-6 py-20 text-center -mt-[100px]">
+      {/* Mobile Hero - completely different layout */}
+      <div className="md:hidden relative z-10 w-full px-4 pt-20 pb-8 text-center">
+        {/* Simple gradient badge */}
+        <motion.div
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+          className="mb-6"
+        >
+          <span className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-medium bg-gradient-to-r from-blue-500/20 to-purple-500/20 text-blue-400 border border-blue-500/30">
+            <span className="w-1.5 h-1.5 rounded-full bg-blue-400 animate-pulse" />
+            Web • SEO • Ads
+          </span>
+        </motion.div>
 
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.1 }}
+        >
+          <h1 className="text-3xl font-bold text-white tracking-tight leading-tight mb-2">
+            Ignite your brand with
+          </h1>
+          <div className="h-9 relative overflow-hidden">
+            <AnimatePresence mode="wait">
+              <motion.span
+                key={textIndex}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -20 }}
+                transition={{ duration: 0.3 }}
+                className="text-2xl font-bold bg-gradient-to-r from-blue-400 via-blue-500 to-purple-500 bg-clip-text text-transparent block"
+              >
+                {rotatingTexts[textIndex]}
+              </motion.span>
+            </AnimatePresence>
+          </div>
+        </motion.div>
+
+        <motion.p
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+          className="text-sm text-neutral-400 mt-4 mb-6 max-w-xs mx-auto leading-relaxed"
+        >
+          Your business deserves more than clicks — it needs conversion, impact, and a digital edge.
+        </motion.p>
+
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.3 }}
+          className="flex flex-col gap-3"
+        >
+          <Link href="/contact" className="w-full">
+            <ShinyButton className="w-full py-3 text-sm">
+              Get Started
+            </ShinyButton>
+          </Link>
+          <a
+            href="#services"
+            className="py-2 text-sm text-neutral-400 hover:text-white transition-colors"
+          >
+            Learn More →
+          </a>
+        </motion.div>
+      </div>
+
+      {/* Desktop Hero - unchanged */}
+      <div className="hidden md:block relative z-10 max-w-7xl mx-auto px-6 py-20 text-center -mt-[100px]">
         {/* Text Hover Effect - Now on top */}
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.8, delay: 0.1 }}
-          className="h-16 md:h-20 lg:h-24 w-full max-w-4xl mx-auto -mb-4 md:-mb-6"
+          className="h-20 lg:h-24 w-full max-w-4xl mx-auto -mb-6"
         >
           <TextHoverEffect text="Web • SEO • Ads" duration={0.15} automatic />
         </motion.div>
@@ -181,7 +248,7 @@ export function Hero() {
           transition={{ duration: 0.6, delay: 0.2 }}
           className="mb-2"
         >
-          <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold text-white tracking-tight leading-[1.1]">
+          <h1 className="text-7xl lg:text-8xl font-bold text-white tracking-tight leading-[1.1]">
             Ignite your brand with
           </h1>
           <div className="relative flex items-center justify-center overflow-visible -mt-2">
@@ -192,7 +259,7 @@ export function Hero() {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -30 }}
                 transition={{ duration: 0.4 }}
-                className="text-5xl md:text-7xl lg:text-8xl font-bold bg-gradient-to-r from-blue-400 via-blue-500 to-purple-500 bg-clip-text text-transparent leading-tight"
+                className="text-7xl lg:text-8xl font-bold bg-gradient-to-r from-blue-400 via-blue-500 to-purple-500 bg-clip-text text-transparent leading-tight"
               >
                 {rotatingTexts[textIndex]}
               </motion.span>
@@ -214,7 +281,7 @@ export function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.5 }}
-          className="flex flex-col sm:flex-row gap-4 justify-center items-center"
+          className="flex flex-row gap-4 justify-center items-center"
         >
           <Link href="/contact">
             <ShinyButton className="px-8 py-4 text-base">

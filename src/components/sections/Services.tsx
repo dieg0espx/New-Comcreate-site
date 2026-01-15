@@ -55,26 +55,26 @@ const services = [
 
 export function Services() {
   return (
-    <section id="services" className="relative py-32 overflow-hidden">
+    <section id="services" className="relative py-16 sm:py-24 md:py-32 overflow-hidden">
 
-      <div className="relative max-w-7xl mx-auto px-6">
+      <div className="relative max-w-7xl mx-auto pl-4 pr-0 sm:px-6">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
           viewport={{ once: true }}
-          className="text-center mb-16"
+          className="text-center mb-8 sm:mb-16"
         >
-          <h2 className="text-3xl md:text-5xl font-bold text-white mb-4">
+          <h2 className="text-xl sm:text-3xl md:text-5xl font-bold text-white mb-2 sm:mb-4">
             Our Services
           </h2>
-          <p className="text-lg text-neutral-400 max-w-2xl mx-auto">
+          <p className="text-sm sm:text-lg text-neutral-400 max-w-2xl mx-auto px-2 sm:px-0">
             We don&apos;t just deliver services — we build results. Everything you need
             to scale confidently across web, SEO, and advertising.
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
           {services.map((service, i) => (
             <ServiceCard key={i} service={service} index={i} />
           ))}
@@ -110,7 +110,7 @@ function ServiceCard({ service, index }: ServiceCardProps) {
       onMouseLeave={() => setIsHovered(false)}
       className="group relative"
     >
-      <div className="relative h-[320px] rounded-2xl bg-neutral-900 border border-white/5 hover:border-white/20 transition-all duration-500 overflow-hidden flex flex-col">
+      <div className="relative h-[240px] sm:h-[320px] rounded-2xl bg-neutral-900 border border-white/5 hover:border-white/20 transition-all duration-500 overflow-hidden flex flex-col">
         {/* Canvas Reveal Effect Background */}
         <motion.div
           initial={{ opacity: 0 }}
@@ -140,28 +140,28 @@ function ServiceCard({ service, index }: ServiceCardProps) {
         )}
 
         {/* Content */}
-        <div className="relative z-10 flex flex-col h-full p-6">
+        <div className="relative z-10 flex flex-col h-full p-4 sm:p-6">
           {/* Icon with animated background */}
-          <div className="relative mb-5">
+          <div className="relative mb-3 sm:mb-5">
             <motion.div
               animate={{
                 scale: isHovered ? 1.1 : 1,
                 rotate: isHovered ? 5 : 0,
               }}
               transition={{ duration: 0.3 }}
-              className={`w-16 h-16 rounded-xl bg-white/5 backdrop-blur-sm flex items-center justify-center border border-white/10 ${service.dotColor}`}
+              className={`w-12 h-12 sm:w-16 sm:h-16 rounded-xl bg-white/5 backdrop-blur-sm flex items-center justify-center border border-white/10 ${service.dotColor}`}
             >
               {service.icon}
             </motion.div>
           </div>
 
           {/* Title */}
-          <h3 className="text-xl font-bold text-white mb-3 group-hover:text-white transition-colors">
+          <h3 className="text-lg sm:text-xl font-bold text-white mb-2 sm:mb-3 group-hover:text-white transition-colors">
             {service.title}
           </h3>
 
           {/* Description */}
-          <p className="text-neutral-400 text-sm leading-relaxed mb-6 flex-grow group-hover:text-neutral-300 transition-colors">
+          <p className="text-neutral-400 text-xs sm:text-sm leading-relaxed mb-4 sm:mb-6 flex-grow group-hover:text-neutral-300 transition-colors">
             {service.description}
           </p>
 

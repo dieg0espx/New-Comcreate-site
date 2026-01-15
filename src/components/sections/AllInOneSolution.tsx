@@ -6,8 +6,8 @@ import { Carousel, Card } from "@/components/ui/apple-cards-carousel";
 
 const DummyContent = ({ description }: { description: string }) => {
   return (
-    <div className="bg-neutral-800 p-8 md:p-14 rounded-3xl mb-4">
-      <p className="text-neutral-400 text-base md:text-xl font-sans max-w-3xl mx-auto">
+    <div className="bg-neutral-800 p-4 sm:p-8 md:p-14 rounded-2xl sm:rounded-3xl mb-4">
+      <p className="text-neutral-400 text-sm sm:text-base md:text-xl font-sans max-w-3xl mx-auto">
         {description}
       </p>
     </div>
@@ -55,8 +55,8 @@ export function AllInOneSolution() {
   ));
 
   return (
-    <section className="relative py-24 md:py-32 overflow-hidden">
-      <div className="relative max-w-7xl mx-auto px-6">
+    <section className="relative py-16 sm:py-24 md:py-32 overflow-hidden">
+      <div className="relative max-w-7xl mx-auto pl-4 pr-0 sm:px-6">
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -65,10 +65,10 @@ export function AllInOneSolution() {
           viewport={{ once: true }}
           className="mb-4"
         >
-          <h2 className="text-3xl md:text-5xl font-bold text-white mb-4">
+          <h2 className="text-xl sm:text-3xl md:text-5xl font-bold text-white mb-2 sm:mb-4">
             All-in-One Solution
           </h2>
-          <p className="text-lg text-neutral-400 max-w-2xl">
+          <p className="text-sm sm:text-lg text-neutral-400 max-w-2xl">
             Everything your brand needs — from strategy and design to SEO and digital advertising.
           </p>
         </motion.div>

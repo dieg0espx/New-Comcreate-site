@@ -131,18 +131,18 @@ function FAQItem({
         {/* Question */}
         <button
           onClick={onToggle}
-          className="w-full flex items-center gap-5 p-6 md:p-8 text-left relative z-10"
+          className="w-full flex items-center gap-2 sm:gap-5 p-3 sm:p-6 md:p-8 text-left relative z-10"
         >
           {/* Icon */}
           <div
-            className={`flex-shrink-0 w-14 h-14 rounded-2xl flex items-center justify-center transition-all duration-500 ${
+            className={`flex-shrink-0 w-8 h-8 sm:w-14 sm:h-14 rounded-lg sm:rounded-2xl flex items-center justify-center transition-all duration-500 ${
               isOpen
                 ? `bg-gradient-to-br ${faq.gradient} shadow-lg`
                 : "bg-white/5 group-hover:bg-white/10"
             }`}
           >
             <faq.icon
-              className={`w-6 h-6 transition-colors duration-300 ${
+              className={`w-4 h-4 sm:w-6 sm:h-6 transition-colors duration-300 ${
                 isOpen ? "text-white" : "text-neutral-400 group-hover:text-white"
               }`}
             />
@@ -150,7 +150,7 @@ function FAQItem({
 
           {/* Question text */}
           <span
-            className={`flex-1 text-lg md:text-xl font-semibold transition-colors duration-300 ${
+            className={`flex-1 text-sm sm:text-lg md:text-xl font-semibold transition-colors duration-300 ${
               isOpen ? "text-white" : "text-neutral-300 group-hover:text-white"
             }`}
           >
@@ -159,7 +159,7 @@ function FAQItem({
 
           {/* Toggle button */}
           <div
-            className={`flex-shrink-0 w-12 h-12 rounded-full flex items-center justify-center transition-all duration-500 ${
+            className={`flex-shrink-0 w-7 h-7 sm:w-12 sm:h-12 rounded-full flex items-center justify-center transition-all duration-500 ${
               isOpen
                 ? `bg-gradient-to-br ${faq.gradient} rotate-0`
                 : "bg-white/5 group-hover:bg-white/10"
@@ -170,9 +170,9 @@ function FAQItem({
               transition={{ duration: 0.3 }}
             >
               {isOpen ? (
-                <IconMinus className="w-5 h-5 text-white" />
+                <IconMinus className="w-4 h-4 sm:w-5 sm:h-5 text-white" />
               ) : (
-                <IconPlus className="w-5 h-5 text-neutral-400 group-hover:text-white" />
+                <IconPlus className="w-4 h-4 sm:w-5 sm:h-5 text-neutral-400 group-hover:text-white" />
               )}
             </motion.div>
           </div>
@@ -187,23 +187,23 @@ function FAQItem({
               exit={{ height: 0, opacity: 0 }}
               transition={{ duration: 0.4, ease: [0.04, 0.62, 0.23, 0.98] }}
             >
-              <div className="px-6 md:px-8 pb-8 relative z-10">
+              <div className="px-3 sm:px-6 md:px-8 pb-4 sm:pb-8 relative z-10">
                 {/* Gradient divider */}
                 <div
-                  className={`h-px w-full bg-gradient-to-r ${faq.gradient} opacity-30 mb-6`}
+                  className={`h-px w-full bg-gradient-to-r ${faq.gradient} opacity-30 mb-3 sm:mb-6`}
                 />
 
-                <div className="pl-[76px]">
-                  <p className="text-neutral-400 leading-relaxed text-lg">
+                <div className="pl-0 sm:pl-[76px]">
+                  <p className="text-neutral-400 leading-relaxed text-xs sm:text-base md:text-lg">
                     {faq.answer}
                   </p>
 
                   {/* Tags */}
-                  <div className="flex flex-wrap gap-2 mt-6">
+                  <div className="flex flex-wrap gap-1.5 sm:gap-2 mt-3 sm:mt-6">
                     {["Learn More", "Get Quote", "Contact Us"].map((tag, i) => (
                       <span
                         key={i}
-                        className={`px-4 py-1.5 rounded-full text-sm bg-gradient-to-r ${faq.gradient} bg-opacity-10 border border-white/10 text-neutral-300`}
+                        className={`px-2 sm:px-4 py-0.5 sm:py-1.5 rounded-full text-[10px] sm:text-sm bg-gradient-to-r ${faq.gradient} bg-opacity-10 border border-white/10 text-neutral-300`}
                       >
                         {tag}
                       </span>
@@ -231,7 +231,7 @@ export function FAQ() {
   const rightFaqs = faqs.filter((_, i) => i % 2 === 1);
 
   return (
-    <section className="relative py-32 overflow-hidden">
+    <section className="relative py-16 sm:py-24 md:py-32 overflow-hidden">
       {/* Background elements */}
       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-blue-950/5 to-transparent" />
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[1px] bg-gradient-to-r from-transparent via-blue-500/30 to-transparent" />
@@ -239,19 +239,19 @@ export function FAQ() {
       <div className="absolute bottom-1/4 left-0 w-[500px] h-[500px] bg-purple-500/5 rounded-full blur-[120px]" />
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-cyan-500/3 rounded-full blur-[200px]" />
 
-      <div className="relative max-w-7xl mx-auto px-6">
+      <div className="relative max-w-7xl mx-auto pl-4 pr-0 sm:px-6">
         {/* Section Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-center mb-20"
+          className="text-center mb-10 sm:mb-16 md:mb-20"
         >
           <motion.span
             initial={{ opacity: 0, scale: 0.9 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
-            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-medium bg-gradient-to-r from-blue-500/10 to-purple-500/10 text-blue-400 border border-blue-500/20 backdrop-blur-sm mb-8"
+            className="inline-flex items-center gap-2 px-4 py-2 sm:px-5 sm:py-2.5 rounded-full text-xs sm:text-sm font-medium bg-gradient-to-r from-blue-500/10 to-purple-500/10 text-blue-400 border border-blue-500/20 backdrop-blur-sm mb-6 sm:mb-8"
           >
             <span className="relative flex h-2 w-2">
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span>
@@ -260,7 +260,7 @@ export function FAQ() {
             Got Questions?
           </motion.span>
 
-          <h2 className="text-4xl md:text-6xl lg:text-7xl font-bold text-white leading-tight mb-6">
+          <h2 className="text-xl sm:text-4xl md:text-6xl lg:text-7xl font-bold text-white leading-tight mb-3 sm:mb-6">
             Frequently Asked{" "}
             <br className="hidden md:block" />
             <span className="bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">
@@ -268,7 +268,7 @@ export function FAQ() {
             </span>
           </h2>
 
-          <p className="text-lg md:text-xl text-neutral-400 max-w-3xl mx-auto">
+          <p className="text-sm sm:text-lg md:text-xl text-neutral-400 max-w-3xl mx-auto px-2 sm:px-0">
             Everything you need to know about working with us. Can&apos;t find what you&apos;re
             looking for? Our team is here to help.
           </p>
@@ -279,7 +279,7 @@ export function FAQ() {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-16"
+          className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 mb-10 sm:mb-16"
         >
           {stats.map((stat, index) => (
             <motion.div
@@ -289,14 +289,14 @@ export function FAQ() {
               viewport={{ once: true }}
               transition={{ delay: index * 0.1 }}
               whileHover={{ scale: 1.05, y: -5 }}
-              className="relative p-6 rounded-2xl bg-gradient-to-br from-neutral-900/80 to-neutral-950/80 border border-white/5 hover:border-blue-500/30 transition-all group overflow-hidden"
+              className="relative p-4 sm:p-6 rounded-xl sm:rounded-2xl bg-gradient-to-br from-neutral-900/80 to-neutral-950/80 border border-white/5 hover:border-blue-500/30 transition-all group overflow-hidden"
             >
               <div className="absolute -top-10 -right-10 w-24 h-24 bg-blue-500/10 rounded-full blur-2xl opacity-0 group-hover:opacity-100 transition-opacity" />
               <div className="relative z-10 text-center">
-                <div className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent mb-1">
+                <div className="text-lg sm:text-3xl md:text-4xl font-bold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent mb-1">
                   {stat.value}
                 </div>
-                <div className="text-sm text-neutral-500">{stat.label}</div>
+                <div className="text-[10px] sm:text-sm text-neutral-500">{stat.label}</div>
               </div>
             </motion.div>
           ))}
@@ -339,33 +339,33 @@ export function FAQ() {
           transition={{ delay: 0.3 }}
           className="mt-16"
         >
-          <div className="relative p-8 md:p-12 rounded-3xl bg-gradient-to-br from-neutral-900/90 to-neutral-950/90 border border-white/10 overflow-hidden">
+          <div className="relative p-4 sm:p-8 md:p-12 rounded-xl sm:rounded-3xl bg-gradient-to-br from-neutral-900/90 to-neutral-950/90 border border-white/10 overflow-hidden">
             {/* Background glow */}
             <div className="absolute -top-20 -left-20 w-64 h-64 bg-blue-500/20 rounded-full blur-[100px]" />
             <div className="absolute -bottom-20 -right-20 w-64 h-64 bg-purple-500/20 rounded-full blur-[100px]" />
 
-            <div className="relative z-10 flex flex-col md:flex-row items-center justify-between gap-8">
+            <div className="relative z-10 flex flex-col md:flex-row items-center justify-between gap-4 sm:gap-8">
               <div className="text-center md:text-left">
-                <h3 className="text-2xl md:text-3xl font-bold text-white mb-3">
+                <h3 className="text-lg sm:text-2xl md:text-3xl font-bold text-white mb-1 sm:mb-3">
                   Still have questions?
                 </h3>
-                <p className="text-neutral-400 text-lg max-w-lg">
+                <p className="text-neutral-400 text-xs sm:text-base md:text-lg max-w-lg">
                   Can&apos;t find the answer you&apos;re looking for? Our team is ready to help
                   you with any questions about our services.
                 </p>
               </div>
 
-              <div className="flex flex-col sm:flex-row gap-4">
+              <div className="flex flex-col sm:flex-row gap-2 sm:gap-4">
                 <Link
                   href="/contact"
-                  className="group inline-flex items-center gap-2 px-8 py-4 rounded-full bg-gradient-to-r from-blue-500 to-purple-500 text-white font-semibold hover:shadow-lg hover:shadow-blue-500/25 transition-all"
+                  className="group inline-flex items-center justify-center gap-2 px-5 py-2.5 sm:px-8 sm:py-4 rounded-full bg-gradient-to-r from-blue-500 to-purple-500 text-white text-sm sm:text-base font-semibold hover:shadow-lg hover:shadow-blue-500/25 transition-all"
                 >
                   Contact Us
-                  <IconArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                  <IconArrowRight className="w-4 h-4 sm:w-5 sm:h-5 group-hover:translate-x-1 transition-transform" />
                 </Link>
                 <a
                   href="mailto:sales@comcreate.org"
-                  className="inline-flex items-center gap-2 px-8 py-4 rounded-full border border-white/10 text-white font-semibold hover:bg-white/5 hover:border-white/20 transition-all"
+                  className="inline-flex items-center justify-center gap-2 px-5 py-2.5 sm:px-8 sm:py-4 rounded-full border border-white/10 text-white text-sm sm:text-base font-semibold hover:bg-white/5 hover:border-white/20 transition-all"
                 >
                   Email Us
                 </a>

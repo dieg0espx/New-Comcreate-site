@@ -36,7 +36,7 @@ export const ContainerScroll = ({
 
   return (
     <div
-      className="h-[35rem] md:h-[50rem] flex items-start justify-center relative p-2 md:p-4 -mt-[200px] md:-mt-[250px] overflow-visible"
+      className="h-[20rem] sm:h-[35rem] md:h-[50rem] flex items-start justify-center relative p-2 md:p-4 -mt-[80px] sm:-mt-[150px] md:-mt-[250px] overflow-visible"
       ref={containerRef}
     >
       {/* Glow effect behind the card */}
@@ -98,9 +98,9 @@ export const Card = ({
         boxShadow:
           "0 0 60px rgba(59, 130, 246, 0.3), 0 0 120px rgba(139, 92, 246, 0.2), 0 9px 20px #0000004a, 0 37px 37px #00000042",
       }}
-      className="max-w-5xl -mt-12 mx-auto h-[30rem] md:h-[40rem] w-full border-4 border-[#6C6C6C] p-2 md:p-6 bg-[#222222] rounded-[30px] shadow-2xl"
+      className="max-w-5xl -mt-6 sm:-mt-12 mx-auto h-[16rem] sm:h-[30rem] md:h-[40rem] w-full border-2 sm:border-4 border-[#6C6C6C] p-1.5 sm:p-2 md:p-6 bg-[#222222] rounded-[16px] sm:rounded-[30px] shadow-2xl"
     >
-      <div className="h-full w-full overflow-hidden rounded-2xl bg-gray-100 dark:bg-zinc-900 md:rounded-2xl md:p-4">
+      <div className="h-full w-full overflow-hidden rounded-xl sm:rounded-2xl bg-gray-100 dark:bg-zinc-900 md:rounded-2xl md:p-4">
         {children}
       </div>
     </motion.div>

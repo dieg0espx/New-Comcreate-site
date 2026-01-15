@@ -37,7 +37,7 @@ const testimonials = [
 
 export function Testimonials() {
   return (
-    <section className="relative py-32 overflow-hidden">
+    <section className="relative py-16 sm:py-24 md:py-32 overflow-hidden">
       {/* Background gradient */}
       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-blue-950/10 to-transparent" />
 
@@ -45,31 +45,31 @@ export function Testimonials() {
       <div className="absolute top-1/2 left-1/4 w-[500px] h-[500px] bg-blue-500/5 rounded-full blur-[150px]" />
       <div className="absolute top-1/2 right-1/4 w-[400px] h-[400px] bg-purple-500/5 rounded-full blur-[120px]" />
 
-      <div className="relative max-w-7xl mx-auto px-6">
+      <div className="relative max-w-7xl mx-auto pl-4 pr-0 sm:px-6">
         {/* Section Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
           viewport={{ once: true }}
-          className="text-center mb-16"
+          className="text-center mb-10 sm:mb-16"
         >
           <motion.span
             initial={{ opacity: 0, scale: 0.9 }}
             whileInView={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.5 }}
             viewport={{ once: true }}
-            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-medium bg-gradient-to-r from-blue-500/10 to-purple-500/10 text-blue-400 border border-blue-500/20 backdrop-blur-sm mb-8"
+            className="inline-flex items-center gap-2 px-4 py-2 sm:px-5 sm:py-2.5 rounded-full text-xs sm:text-sm font-medium bg-gradient-to-r from-blue-500/10 to-purple-500/10 text-blue-400 border border-blue-500/20 backdrop-blur-sm mb-6 sm:mb-8"
           >
             <div className="flex gap-0.5">
               {[...Array(5)].map((_, i) => (
-                <IconStarFilled key={i} size={12} className="text-yellow-400" />
+                <IconStarFilled key={i} size={10} className="text-yellow-400 sm:w-3 sm:h-3" />
               ))}
             </div>
             REVIEWS
           </motion.span>
 
-          <h2 className="text-4xl md:text-6xl font-bold text-white leading-tight mb-6">
+          <h2 className="text-xl sm:text-4xl md:text-6xl font-bold text-white leading-tight mb-3 sm:mb-6">
             What our clients say
             <br />
             <span className="bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">
@@ -77,7 +77,7 @@ export function Testimonials() {
             </span>
           </h2>
 
-          <p className="text-lg text-neutral-400 max-w-2xl mx-auto">
+          <p className="text-sm sm:text-lg text-neutral-400 max-w-2xl mx-auto px-2 sm:px-0">
             From idea to execution, our partners trust Comcreate to deliver beyond
             expectations every time. Their success stories are our proudest proof.
           </p>
@@ -122,7 +122,7 @@ export function Testimonials() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.4 }}
           viewport={{ once: true }}
-          className="mt-20 grid grid-cols-2 md:grid-cols-4 gap-8"
+          className="mt-8 sm:mt-20 grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-8"
         >
           {[
             { value: "500+", label: "Happy Clients" },
@@ -131,10 +131,10 @@ export function Testimonials() {
             { value: "50+", label: "5-Star Reviews" },
           ].map((stat, index) => (
             <div key={index} className="text-center">
-              <div className="text-3xl md:text-4xl font-bold text-white mb-2">
+              <div className="text-xl sm:text-3xl md:text-4xl font-bold text-white mb-0.5 sm:mb-2">
                 {stat.value}
               </div>
-              <div className="text-sm text-neutral-500">{stat.label}</div>
+              <div className="text-[10px] sm:text-sm text-neutral-500">{stat.label}</div>
             </div>
           ))}
         </motion.div>

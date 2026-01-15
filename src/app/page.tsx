@@ -16,7 +16,7 @@ import { StarsBackground } from "@/components/ui/stars-background";
 
 export default function Home() {
   return (
-    <main className="bg-black relative">
+    <main className="bg-black relative overflow-x-hidden">
       {/* Global Star Background */}
       <div className="fixed inset-0 z-0">
         <StarsBackground />

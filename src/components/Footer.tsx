@@ -38,10 +38,10 @@ const socialLinks = [
 export function Footer() {
   return (
     <footer className="border-t border-white/10 bg-black">
-      <div className="mx-auto max-w-7xl px-6 py-16">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-12">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 py-12 sm:py-16">
+        <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-8 sm:gap-12">
           {/* Brand */}
-          <div className="md:col-span-1">
+          <div className="col-span-2 sm:col-span-2 md:col-span-1">
             <Link href="/" className="inline-block">
               <Image
                 src="/images/logo.png"
@@ -125,7 +125,7 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="mt-16 pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-4">
+        <div className="mt-10 sm:mt-16 pt-6 sm:pt-8 border-t border-white/10 flex flex-col sm:flex-row justify-between items-center gap-4">
           <p className="text-sm text-neutral-500">
             &copy; {new Date().getFullYear()} Comcreate. All rights reserved.
           </p>

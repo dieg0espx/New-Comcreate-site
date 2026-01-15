@@ -1,6 +1,7 @@
 export { Hero } from "./Hero";
 export { GlobeSection } from "./GlobeSection";
 export { Services } from "./Services";
+export { AllInOneSolution } from "./AllInOneSolution";
 export { Stats } from "./Stats";
 export { Features } from "./Features";
 export { Testimonials } from "./Testimonials";

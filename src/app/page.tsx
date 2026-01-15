@@ -2,6 +2,7 @@ import {
   Hero,
   GlobeSection,
   Services,
+  AllInOneSolution,
   Stats,
   Features,
   Testimonials,
@@ -25,6 +26,7 @@ export default function Home() {
         <Hero />
         <GlobeSection />
         <Features />
+        <AllInOneSolution />
         <Services />
         <ProjectsParallax />
         <Stats />
